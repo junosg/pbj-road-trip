@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
 
         _look = _inputActions.Player.Look;
         _look.Enable();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void OnDisable()
@@ -28,6 +31,9 @@ public class PlayerController : MonoBehaviour
         _move.Disable();
         _look.Disable();
         _inputActions.Disable();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     // Update is called once per frame
