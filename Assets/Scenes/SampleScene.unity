@@ -936,6 +936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11ea6571f3f5fd4cbaad5326ba5dce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SanityManager
+  sanityTrackerUI: {fileID: 1964847459}
 --- !u!1 &749065260
 GameObject:
   m_ObjectHideFlags: 0

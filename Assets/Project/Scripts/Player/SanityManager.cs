@@ -4,6 +4,8 @@ public class SanityManager : MonoBehaviour
 {
     public static SanityManager Instance { get; private set; }
     private float _sanity = 100;
+    
+    [SerializeField] private GameObject sanityTrackerUI;
 
     #region GETTERS
     public float Sanity { get { return _sanity; }}
