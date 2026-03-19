@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] float _movespeed = 5f;
     [SerializeField] float _lookspeed = 100f;
+    [SerializeField] Vector2 _moveLimit;
     [SerializeField] GameObject _lookTarget;
 
     private InputSystem_Actions _inputActions;
@@ -47,8 +48,9 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 moveInput = _move.ReadValue<Vector2>();
         Vector3 velocity = new(moveInput.x * _movespeed * Time.deltaTime, 0f, moveInput.y * _movespeed * Time.deltaTime);
+        Vector3 newPosition = new(Mathf.Clamp(transform.position.x + velocity.x, _moveLimit.x, _moveLimit.y), transform.position.y + velocity.y, transform.position.z + velocity.z);
 
-        transform.position = transform.position + velocity;
+        transform.position = newPosition;
     }
 
     void Look()
