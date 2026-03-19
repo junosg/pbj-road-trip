@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     private InputSystem_Actions _inputActions;
     private InputAction _move;
     private InputAction _look;
+    private InputAction _focus;
+
+    private bool _isViewing;
 
     void OnEnable()
     {
@@ -22,6 +25,9 @@ public class PlayerController : MonoBehaviour
 
         _look = _inputActions.Player.Look;
         _look.Enable();
+        
+        _focus = _inputActions.Player.Focus;
+        _focus.Enable();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -42,6 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Look();
+        LookAtMirror();
     }
 
     void Move()
@@ -59,4 +66,31 @@ public class PlayerController : MonoBehaviour
 
         _lookTarget.transform.Rotate(_lookspeed * lookInput.x * Time.deltaTime * Vector3.up, Space.World);
     }
+
+    void LookAtMirror()
+    {
+        if (_focus.triggered)
+        {
+
+            if (_isViewing == false)
+            {
+                Vector3 mirrorPosition = new Vector3(0.7f, 0.7f, 1f);
+                
+                _lookTarget.transform.localPosition = mirrorPosition;
+                
+                _isViewing = true;
+            }
+            else
+            {
+                Vector3 resetPosition = new Vector3(0f, 0.441f, 1f);
+
+                _lookTarget.transform.localPosition = resetPosition;
+                
+                _isViewing = false;
+            }
+
+
+        }
+    }
+
 }
