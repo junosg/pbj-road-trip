@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Seat : MonoBehaviour
+public class Seat : MonoBehaviour, IEvent 
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -13,4 +13,10 @@ public class Seat : MonoBehaviour
     {
         
     }
+
+    public void Appear()
+    {
+        
+    }
+
 }

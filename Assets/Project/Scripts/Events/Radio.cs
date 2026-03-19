@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Radio : MonoBehaviour
+public class Radio : MonoBehaviour, IEvent
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -10,6 +10,11 @@ public class Radio : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+    
+    public void Appear()
     {
         
     }
