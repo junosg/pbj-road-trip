@@ -77,7 +77,8 @@ public class PlayerController : MonoBehaviour
                 Vector3 mirrorPosition = new Vector3(0.7f, 0.7f, 1f);
                 
                 _lookTarget.transform.localPosition = mirrorPosition;
-                
+                _lookTarget.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                _look.Disable();
                 _isViewing = true;
             }
             else
@@ -85,7 +86,8 @@ public class PlayerController : MonoBehaviour
                 Vector3 resetPosition = new Vector3(0f, 0.441f, 0f);
 
                 _lookTarget.transform.localPosition = resetPosition;
-                
+                _lookTarget.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                _look.Enable();
                 _isViewing = false;
             }
 
