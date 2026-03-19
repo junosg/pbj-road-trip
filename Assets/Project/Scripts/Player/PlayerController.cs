@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Vector3 resetPosition = new Vector3(0f, 0.441f, 1f);
+                Vector3 resetPosition = new Vector3(0f, 0.441f, 0f);
 
                 _lookTarget.transform.localPosition = resetPosition;
                 
