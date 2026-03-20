@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Seat : MonoBehaviour, IEvent 
+public class Seat : SanityEvents
 {
     
     [SerializeField] GameObject seat;
-    public bool Active { get; set; }
+    public override bool Active { get; set; }
  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,7 +21,7 @@ public class Seat : MonoBehaviour, IEvent
         }
     }
 
-    public void Appear()
+    public override void Appear()
     {
         Debug.Log("Radio Appear");
         Active = true;

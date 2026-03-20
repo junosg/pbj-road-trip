@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Mirror : MonoBehaviour, IEvent
+public class Mirror : SanityEvents
 {
     
-    public bool Active { get; set; }
+    public override bool Active { get; set; }
     [SerializeField] private GameObject mirror;
 
     
@@ -19,7 +19,7 @@ public class Mirror : MonoBehaviour, IEvent
         mirror.SetActive(false);
     }
     
-    public void Appear()
+    public override void Appear()
     {
         Debug.Log("Radio Appear");
         Active = true;

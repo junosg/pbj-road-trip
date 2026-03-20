@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class EventsManager : MonoBehaviour
 {
     
-    public List<IEvent> events;
+    public List<SanityEvents> events;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,7 +15,7 @@ public class EventsManager : MonoBehaviour
 
         foreach (GameObject go in goEvents)
         {
-            events.Add(go.GetComponent<IEvent>());
+            events.Add(go.GetComponent<SanityEvents>());
         }
     }
 

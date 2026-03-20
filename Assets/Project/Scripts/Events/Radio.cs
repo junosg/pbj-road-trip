@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Radio : MonoBehaviour, IEvent
+public class Radio : SanityEvents
 {
     [SerializeField] AudioClip sanityClip;
-    public bool Active { get; set; }
-    
+    public override bool Active { get; set; }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,7 +17,7 @@ public class Radio : MonoBehaviour, IEvent
         
     }
     
-    public void Appear()
+    public override void Appear()
     {
         //Play Sound
         Debug.Log("Radio Appear");
