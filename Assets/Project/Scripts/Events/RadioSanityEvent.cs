@@ -2,19 +2,26 @@ using UnityEngine;
 
 public class RadioSanityEvent : SanityEvent
 {
+    
+    [SerializeField] AudioClip radioSanitySound;
+    
     public override void OnActivate()
     {
-        throw new System.NotImplementedException();
+        SoundManager.Instance.PlayMusic(radioSanitySound);
     }
 
     public override void OnDeactivate()
     {
-        throw new System.NotImplementedException();
+        Activated = false;
     }
 
     public void Update()
     {
-        throw new System.NotImplementedException();
+        if (Activated)
+        {
+            SanityManager.Instance.DecreaseSanity(sanityDecreaseSpeed * Time.deltaTime);
+            
+        }
     }
     
 }

@@ -16,7 +16,7 @@ public abstract class SanityEvent: MonoBehaviour
     public float sanityDecreaseSpeed = 1f;
 
     private bool _activated;
-    public bool Activated { get { return _activated; } }
+    public bool Activated { get { return _activated; } set => _activated = value; }
 
     void Start()
     {
