@@ -40,11 +40,8 @@ public class SanityManager : MonoBehaviour
 
     void Start()
     {
-        SoundManager.Instance.SetMusicVolume(0.025f);
+        SoundManager.Instance.SetMusicVolume(0.05f);
         SoundManager.Instance.SetAmbienceVolume(0.1f);
-
-        // SoundManager.Instance.PlayMusic(_highSanityBGM);
-        // SoundManager.Instance.PlayAmbience(_highSanityAmbience);
     }
 
     public void IncreaseSanity(float value)
