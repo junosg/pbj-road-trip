@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class Mirror : MonoBehaviour, IEvent
 {
-
+    
+    public bool Active { get; set; }
     [SerializeField] private GameObject mirror;
-    public bool hasAppeared = false;
+
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,8 +21,10 @@ public class Mirror : MonoBehaviour, IEvent
     
     public void Appear()
     {
-        hasAppeared = true;
+        Active = true;
         mirror.SetActive(true);
         SanityManager.Instance.DecreaseSanity(3);
     }
+
+    
 }
