@@ -23,7 +23,9 @@ public class SoundManager : MonoBehaviour
 
     public void PlayMusic(AudioClip clip)
     {
-        _musicSource.generator = clip;
+        if (_musicSource.clip == clip) return;
+
+        _musicSource.clip = clip;
         _musicSource.Play();
     }
 
@@ -34,7 +36,9 @@ public class SoundManager : MonoBehaviour
 
     public void PlayAmbience(AudioClip clip)
     {
-        _ambienceSource.generator = clip;
+        if (_ambienceSource.clip == clip) return;
+
+        _ambienceSource.clip = clip;
         _ambienceSource.Play();
     }
 

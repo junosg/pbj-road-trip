@@ -1,11 +1,15 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SanityManager : MonoBehaviour
 {
     public static SanityManager Instance { get; private set; }
     private float _sanity = 100;
     
-    [SerializeField] private GameObject sanityTrackerUI;
+    [Header("BGM Clips")]
+    [SerializeField] AudioClip _highSanityBGM;
+    [SerializeField] AudioClip _lowSanityBGM;
 
     #region GETTERS
     public float Sanity { get { return _sanity; }}
@@ -14,6 +18,11 @@ public class SanityManager : MonoBehaviour
     #region CONSTANTS
     private const float MAX_SANITY = 100;
     private const float MIN_SANITY = 0;
+    private const float LOW_SANITY_THRESHOLD = 40;
+    #endregion
+
+    #region EVENTS
+    public UnityEvent<float> SanityUpdated = new();
     #endregion
 
     void Awake()
@@ -35,6 +44,13 @@ public class SanityManager : MonoBehaviour
         {
             _sanity = MAX_SANITY;
         }
+
+        if (_sanity > LOW_SANITY_THRESHOLD)
+        {
+            SoundManager.Instance.PlayMusic(_highSanityBGM);
+        }
+
+        SanityUpdated.Invoke(_sanity);
     }
 
     public void DecreaseSanity(float value)
@@ -45,5 +61,17 @@ public class SanityManager : MonoBehaviour
         {
             _sanity = MIN_SANITY;
         }
+
+        if (_sanity < LOW_SANITY_THRESHOLD)
+        {
+            SoundManager.Instance.PlayMusic(_lowSanityBGM);
+        }
+
+        SanityUpdated.Invoke(_sanity);
+    }
+
+    void FixedUpdate()
+    {
+        DecreaseSanity(0.1f);
     }
 }
