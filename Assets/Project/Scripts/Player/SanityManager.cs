@@ -18,9 +18,9 @@ public class SanityManager : MonoBehaviour
     #endregion 
 
     #region CONSTANTS
-    private const float MAX_SANITY = 100;
-    private const float MIN_SANITY = 0;
-    private const float LOW_SANITY_THRESHOLD = 40;
+    public const float MAX_SANITY = 100;
+    public const float MIN_SANITY = 0;
+    public const float LOW_SANITY_THRESHOLD = 40;
     #endregion
 
     #region EVENTS

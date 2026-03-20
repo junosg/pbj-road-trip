@@ -7,6 +7,9 @@ public class MenuController : MonoBehaviour
 {
     UIDocument _menuDocument;
 
+    VisualElement _mainMenu;
+    VisualElement _settingsMenu;
+
     Button _startButton;
     Button _settingsButton;
     Button _creditsButton;
@@ -19,6 +22,10 @@ public class MenuController : MonoBehaviour
     void Start()
     {
         _menuDocument = GetComponent<UIDocument>();
+
+        _mainMenu = _menuDocument.rootVisualElement.Q<VisualElement>("main-menu");
+        _settingsMenu = _menuDocument.rootVisualElement.Q<VisualElement>("settings-menu");
+
         _startButton = _menuDocument.rootVisualElement.Q<Button>("start-button");
         _settingsButton = _menuDocument.rootVisualElement.Q<Button>("settings-button");
         _creditsButton = _menuDocument.rootVisualElement.Q<Button>("credits-button");
@@ -44,6 +51,9 @@ public class MenuController : MonoBehaviour
     void OnSettingsButtonClick()
     {
         SoundManager.Instance.PlaySfxOneShot(_buttonClickClip);
+
+        _settingsMenu.style.display = DisplayStyle.Flex;
+        _mainMenu.style.display = DisplayStyle.None;
     }
 
     void OnCreditsButtonClick()
