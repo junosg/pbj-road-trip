@@ -568,7 +568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2d49d68a4ef6d4ab0af68e6867753c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuController
-  _buttonClick: {fileID: 8300000, guid: ae5c6e219aa244d40bfc993ccdd89cac, type: 3}
+  _buttonClickClip: {fileID: 8300000, guid: ae5c6e219aa244d40bfc993ccdd89cac, type: 3}
+  _buttonHoverClip: {fileID: 8300000, guid: f0d3d9ea0c9705f47905d1d645a6a32c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

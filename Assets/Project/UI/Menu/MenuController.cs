@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,7 +11,8 @@ public class MenuController : MonoBehaviour
     Button _settingsButton;
     Button _creditsButton;
     
-    [SerializeField] AudioClip _buttonClick;
+    [SerializeField] AudioClip _buttonClickClip;
+    [SerializeField] AudioClip _buttonHoverClip;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,22 +25,31 @@ public class MenuController : MonoBehaviour
         _startButton.clicked += OnStartButtonClick;
         _settingsButton.clicked += OnSettingsButtonClick;
         _creditsButton.clicked += OnCreditsButtonClick;
+
+        _startButton.RegisterCallback<PointerEnterEvent>(OnButtonHover);
+        _settingsButton.RegisterCallback<PointerEnterEvent>(OnButtonHover);
+        _creditsButton.RegisterCallback<PointerEnterEvent>(OnButtonHover);
     }
 
     void OnStartButtonClick()
     {
-        SoundManager.Instance.PlaySfx(_buttonClick);
+        SoundManager.Instance.PlaySfxOneShot(_buttonClickClip);
 
         GameSceneManager.Instance.SmoothLoadScene(GameSceneManager.GAME_SCENE_INDEX);
     }
 
     void OnSettingsButtonClick()
     {
-        SoundManager.Instance.PlaySfx(_buttonClick);
+        SoundManager.Instance.PlaySfxOneShot(_buttonClickClip);
     }
 
     void OnCreditsButtonClick()
     {
-        SoundManager.Instance.PlaySfx(_buttonClick);
+        SoundManager.Instance.PlaySfxOneShot(_buttonClickClip);
+    }
+
+    void OnButtonHover(PointerEnterEvent evt)
+    {
+        SoundManager.Instance.PlaySfxOneShot(_buttonHoverClip);
     }
 }
