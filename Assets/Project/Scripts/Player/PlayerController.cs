@@ -15,7 +15,20 @@ public class PlayerController : MonoBehaviour
     private InputAction _look;
     private InputAction _focus;
 
-    private bool _isViewing;
+    public bool _isViewing;
+
+    public static PlayerController Instance { get; private set; }
+    
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        } else
+        {
+            Instance = this;
+        }
+    }
 
     void OnEnable()
     {
