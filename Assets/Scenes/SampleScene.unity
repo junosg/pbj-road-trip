@@ -1029,6 +1029,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 134613544866600663, guid: 2841349614f44d1489f3c20d7f1296b7, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 134613544866600663, guid: 2841349614f44d1489f3c20d7f1296b7, type: 3}
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 0}
@@ -1304,7 +1308,7 @@ Light:
   serializedVersion: 12
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
