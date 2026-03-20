@@ -19,8 +19,13 @@ public class RadioSanityEvent : SanityEvent
     {
         if (Activated)
         {
+            PlayerController.Instance._isTurnOff = false;
             SanityManager.Instance.DecreaseSanity(sanityDecreaseSpeed * Time.deltaTime);
-            
+
+            if (PlayerController.Instance._isTurnOff)
+            {
+                Deactivate();
+            }
         }
     }
     

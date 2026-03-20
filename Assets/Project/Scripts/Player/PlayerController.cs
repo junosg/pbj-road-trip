@@ -14,8 +14,10 @@ public class PlayerController : MonoBehaviour
     private InputAction _move;
     private InputAction _look;
     private InputAction _focus;
+    private InputAction _radioToggle;
 
     public bool _isViewing;
+    public bool _isTurnOff;
 
     public static PlayerController Instance { get; private set; }
     
@@ -44,6 +46,9 @@ public class PlayerController : MonoBehaviour
         _focus = _inputActions.Player.Focus;
         _focus.Enable();
 
+        _radioToggle = _inputActions.Player.RadioToggle;
+        _focus.Enable();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -69,6 +74,7 @@ public class PlayerController : MonoBehaviour
         Move();
         Look();
         LookAtMirror();
+        TurnOffRadio();
     }
 
     void Move()
@@ -110,6 +116,14 @@ public class PlayerController : MonoBehaviour
                 _look.Enable();
                 _isViewing = false;
             }
+        }
+    }
+
+    public void TurnOffRadio()
+    {
+        if (_radioToggle.triggered)
+        {
+            _isTurnOff = true;
         }
     }
 
