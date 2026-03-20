@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Vector2 _moveLimit;
     [SerializeField] GameObject _lookTarget;
 
+    [SerializeField] AudioClip _carMovingClip;
+
     private InputSystem_Actions _inputActions;
     private InputAction _move;
     private InputAction _look;
@@ -95,8 +97,6 @@ public class PlayerController : MonoBehaviour
                 _look.Enable();
                 _isViewing = false;
             }
-
-
         }
     }
 
@@ -108,5 +108,10 @@ public class PlayerController : MonoBehaviour
     public void EnableMovement()
     {
         _move.Enable();
+    }
+
+    public void PlayCarMovingClip()
+    {
+        SoundManager.Instance.PlaySfx(_carMovingClip);
     }
 }

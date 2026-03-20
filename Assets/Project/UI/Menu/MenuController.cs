@@ -13,6 +13,7 @@ public class MenuController : MonoBehaviour
     
     [SerializeField] AudioClip _buttonClickClip;
     [SerializeField] AudioClip _buttonHoverClip;
+    [SerializeField] AudioClip _menuBGM;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +30,8 @@ public class MenuController : MonoBehaviour
         _startButton.RegisterCallback<PointerEnterEvent>(OnButtonHover);
         _settingsButton.RegisterCallback<PointerEnterEvent>(OnButtonHover);
         _creditsButton.RegisterCallback<PointerEnterEvent>(OnButtonHover);
+
+        SoundManager.Instance.PlayMusic(_menuBGM);
     }
 
     void OnStartButtonClick()

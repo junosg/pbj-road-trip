@@ -38,11 +38,11 @@ public class SanityManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        SoundManager.Instance.SetMusicVolume(0.1f);
-        SoundManager.Instance.SetAmbienceVolume(0.1f);
-    }
+    // void Start()
+    // {
+    //     SoundManager.Instance.SetMusicVolume(0.1f);
+    //     SoundManager.Instance.SetAmbienceVolume(0.1f);
+    // }
 
     public void IncreaseSanity(float value)
     {
@@ -76,5 +76,25 @@ public class SanityManager : MonoBehaviour
         }
 
         SanityUpdated.Invoke(_sanity);
+    }
+
+    public void PlayHighSanityBGM()
+    {
+        SoundManager.Instance.PlayMusic(_highSanityBGM);
+    }
+
+    public void PlayLowSanityBGM()
+    {
+        SoundManager.Instance.PlayMusic(_lowSanityBGM);
+    }
+
+    public void PlayHighSanityAmbience()
+    {
+        SoundManager.Instance.PlayMusic(_highSanityAmbience);
+    }
+
+    public void PlayLowSanityAmbience()
+    {
+        SoundManager.Instance.PlayMusic(_lowSanityAmbience);
     }
 }
