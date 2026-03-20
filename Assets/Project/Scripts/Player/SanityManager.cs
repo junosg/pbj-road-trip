@@ -10,6 +10,8 @@ public class SanityManager : MonoBehaviour
     [Header("BGM Clips")]
     [SerializeField] AudioClip _highSanityBGM;
     [SerializeField] AudioClip _lowSanityBGM;
+    [SerializeField] AudioClip _highSanityAmbience;
+    [SerializeField] AudioClip _lowSanityAmbience;
 
     #region GETTERS
     public float Sanity { get { return _sanity; }}
@@ -34,6 +36,15 @@ public class SanityManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    void Start()
+    {
+        SoundManager.Instance.SetMusicVolume(0.025f);
+        SoundManager.Instance.SetAmbienceVolume(0.1f);
+
+        SoundManager.Instance.PlayMusic(_highSanityBGM);
+        SoundManager.Instance.PlayAmbience(_highSanityAmbience);
     }
 
     public void IncreaseSanity(float value)

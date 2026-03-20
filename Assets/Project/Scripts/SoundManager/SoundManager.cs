@@ -18,6 +18,7 @@ public class SoundManager : MonoBehaviour
         } else
         {
             Instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
     }
 
@@ -46,5 +47,25 @@ public class SoundManager : MonoBehaviour
     {
         _uiSource.clip = clip;
         _sfxSource.Play();
+    }
+
+    public void SetMusicVolume(float value)
+    {
+        _musicSource.volume = value;
+    }
+
+    public void SetSfxVolume(float value)
+    {
+        _sfxSource.volume = value;
+    }
+
+    public void SetAmbienceVolume(float value)
+    {
+        _ambienceSource.volume = value;
+    }
+
+    public void SetUIVolume(float value)
+    {
+        _uiSource.volume = value;
     }
 }
