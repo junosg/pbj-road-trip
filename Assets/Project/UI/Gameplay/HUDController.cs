@@ -25,6 +25,10 @@ public class HUDController : MonoBehaviour
     {
         Debug.Log(value);
         Length widthLength = new(value, LengthUnit.Percent);
+
+        if (value > 40) _sanityBarFill.style.backgroundColor = Color.green;
+        else  _sanityBarFill.style.backgroundColor = Color.red;
+
         _sanityBarFill.style.width = widthLength;
     }
 }
