@@ -23,6 +23,7 @@ public class Seat : MonoBehaviour, IEvent
 
     public void Appear()
     {
+        Debug.Log("Radio Appear");
         Active = true;
         seat.SetActive(true);
         SanityManager.Instance.DecreaseSanity(5);

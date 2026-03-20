@@ -21,6 +21,7 @@ public class Mirror : MonoBehaviour, IEvent
     
     public void Appear()
     {
+        Debug.Log("Radio Appear");
         Active = true;
         mirror.SetActive(true);
         SanityManager.Instance.DecreaseSanity(3);

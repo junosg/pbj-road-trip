@@ -20,6 +20,7 @@ public class Radio : MonoBehaviour, IEvent
     public void Appear()
     {
         //Play Sound
+        Debug.Log("Radio Appear");
         SoundManager.Instance.PlaySfx(sanityClip);
         SanityManager.Instance.DecreaseSanity(1);
         Active = true;
