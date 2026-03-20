@@ -11,7 +11,7 @@ public class EventsManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameObject[] goEvents = GameObject.FindGameObjectsWithTag ("Event");
+        GameObject[] goEvents = GameObject.FindGameObjectsWithTag("Event");
 
         foreach (GameObject go in goEvents)
         {
