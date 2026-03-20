@@ -18,7 +18,6 @@ public class SoundManager : MonoBehaviour
         } else
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
         }
     }
 
@@ -32,7 +31,10 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySfx(AudioClip clip)
     {
-        _sfxSource.PlayOneShot(clip);
+        if (_sfxSource.clip == clip) return;
+
+        _sfxSource.clip = clip;
+        _sfxSource.Play();
     }
 
     public void PlayAmbience(AudioClip clip)
@@ -47,6 +49,11 @@ public class SoundManager : MonoBehaviour
     {
         _uiSource.clip = clip;
         _sfxSource.Play();
+    }
+
+    public void PlaySfxOneShot(AudioClip clip)
+    {
+        _sfxSource.PlayOneShot(clip);
     }
 
     public void SetMusicVolume(float value)

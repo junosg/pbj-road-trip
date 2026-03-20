@@ -44,7 +44,7 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Speed: 5
+    - _Speed: 0
     - _pixelSize: 16
     m_Colors:
     - _Color: {r: 0.9528302, g: 0.9483357, b: 0.9483357, a: 0}

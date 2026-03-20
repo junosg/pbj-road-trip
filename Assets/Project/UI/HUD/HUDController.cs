@@ -12,7 +12,6 @@ public class HUDController : MonoBehaviour
         _hudDocument = GetComponent<UIDocument>();
 
         _sanityBarFill = _hudDocument.rootVisualElement.Q<VisualElement>("sanity-bar-fill");
-        Debug.Log(_sanityBarFill);
 
         if (SanityManager.Instance)
         {
@@ -23,7 +22,6 @@ public class HUDController : MonoBehaviour
 
     public void SetSanityBarFillSize(float value)
     {
-        Debug.Log(value);
         Length widthLength = new(value, LengthUnit.Percent);
 
         if (value > 40) _sanityBarFill.style.backgroundColor = Color.green;

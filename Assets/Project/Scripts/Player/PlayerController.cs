@@ -43,6 +43,11 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = true;
     }
 
+    void Start()
+    {
+        DisableMovement();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -95,4 +100,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void DisableMovement()
+    {
+        _move.Disable();
+    }
+
+    public void EnableMovement()
+    {
+        _move.Enable();
+    }
 }

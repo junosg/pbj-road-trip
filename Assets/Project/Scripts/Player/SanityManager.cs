@@ -43,8 +43,8 @@ public class SanityManager : MonoBehaviour
         SoundManager.Instance.SetMusicVolume(0.025f);
         SoundManager.Instance.SetAmbienceVolume(0.1f);
 
-        SoundManager.Instance.PlayMusic(_highSanityBGM);
-        SoundManager.Instance.PlayAmbience(_highSanityAmbience);
+        // SoundManager.Instance.PlayMusic(_highSanityBGM);
+        // SoundManager.Instance.PlayAmbience(_highSanityAmbience);
     }
 
     public void IncreaseSanity(float value)
@@ -79,10 +79,5 @@ public class SanityManager : MonoBehaviour
         }
 
         SanityUpdated.Invoke(_sanity);
-    }
-
-    void FixedUpdate()
-    {
-        DecreaseSanity(0.1f);
     }
 }
