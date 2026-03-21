@@ -13,6 +13,10 @@ public class MirrorSanityEvent : SanityEvent
         transform.GetChild(0).gameObject.SetActive(false);
     }
 
+    public override void OnIgnored()
+    {
+    }
+
     public void Update()
     {
         if (Activated)

@@ -27,5 +27,8 @@ public class RadioSanityEvent : SanityEvent
             SanityManager.Instance.DecreaseSanity(sanityDecreaseSpeed * Time.deltaTime);
         }
     }
-    
+
+    public override void OnIgnored()
+    {
+    }
 }

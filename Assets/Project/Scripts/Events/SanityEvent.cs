@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 
 public static class SanityEventData
 {
@@ -15,6 +16,7 @@ public abstract class SanityEvent: MonoBehaviour
     [SerializeField] float _eventRepeatRate = 5;
     [Range(0, 1)]
     [SerializeField] float _eventProbability = 1;
+    [SerializeField] float _secondsUntilIgnored = 3f;
 
     [SerializeField] AudioClip _lowSanityClip;
     [SerializeField] AudioClip _highSanityClip;
@@ -34,9 +36,15 @@ public abstract class SanityEvent: MonoBehaviour
         }
     }
 
+    void OnDisable()
+    {
+        StopCoroutine("Ignored");
+    }
+
     void Start()
     {
         InvokeRepeating("Activate", _eventDelay, _eventRepeatRate);
+        GameManager.Instance.GameOver.AddListener(OnGameOver);
     }
 
     public void Activate()
@@ -45,6 +53,7 @@ public abstract class SanityEvent: MonoBehaviour
         if (Random.Range(0, 1) > _eventProbability) return;
 
         _activated = true;
+        _timeStarted = Time.deltaTime;
         SanityEventData.ActivatedCount += 1;
 
         if (SanityManager.Instance.Sanity < SanityManager.LOW_SANITY_THRESHOLD)
@@ -56,6 +65,7 @@ public abstract class SanityEvent: MonoBehaviour
         }
 
         OnActivate();
+        StartCoroutine("Ignored", _secondsUntilIgnored);
     }
 
     public void Deactivate()
@@ -63,6 +73,7 @@ public abstract class SanityEvent: MonoBehaviour
         if (!_activated) return;
         _activated = false;
         SanityEventData.ActivatedCount -= 1;
+        StopCoroutine("Ignored");
 
         if (SanityEventData.ActivatedCount <= 0) SoundManager.Instance.PlaySfx(_defaultClip);
         OnDeactivate();
@@ -70,6 +81,7 @@ public abstract class SanityEvent: MonoBehaviour
 
     public abstract void OnActivate();
     public abstract void OnDeactivate();
+    public abstract void OnIgnored();
 
     public bool IsOnCamera()
     {
@@ -79,5 +91,17 @@ public abstract class SanityEvent: MonoBehaviour
         bool onScreen = viewPosition.x >= 0 && viewPosition.x <= 1 && viewPosition.y >= 0 && viewPosition.y <= 1;
 
         return inFront && onScreen;
+    }
+
+    IEnumerator Ignored(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        OnIgnored();
+    }
+
+    private void OnGameOver()
+    {
+        gameObject.SetActive(false);
     }
 }
