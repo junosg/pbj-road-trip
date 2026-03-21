@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject _lookTarget;
 
     [SerializeField] AudioClip _carMovingClip;
+    [SerializeField] SteeringWheelController _steeringWheel;
 
     private InputSystem_Actions _inputActions;
     private InputAction _move;
@@ -83,6 +84,8 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         Vector2 moveInput = _move.ReadValue<Vector2>();
+        _steeringWheel.SetSteeringWheelPosition(moveInput.x);
+
         Vector3 velocity = new(moveInput.x * _movespeed * Time.deltaTime, 0f, moveInput.y * _movespeed * Time.deltaTime);
         Vector3 newPosition = new(Mathf.Clamp(transform.position.x + velocity.x, _moveLimit.x, _moveLimit.y), transform.position.y + velocity.y, transform.position.z + velocity.z);
 
