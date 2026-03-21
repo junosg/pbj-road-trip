@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/Project/UI/Menu/menu.uss?fileID=7433441132597879392&amp;guid=4abb5f23c18431f47b09566bb32af199&amp;type=3#menu"/>
     <ui:VisualElement name="main-menu" enabled="true" style="flex-grow: 1; background-color: rgb(0, 0, 0); justify-content: center; align-self: auto; align-items: center; align-content: center; flex-basis: 20%; display: flex;">
         <ui:Button text="Start" name="start-button" class="horror-button"/>
-        <ui:Button text="Settings" name="settings-button" class="horror-button"/>
+        <ui:Button text="Leaderboard" name="leaderboard-button" class="horror-button"/>
         <ui:Button text="Credits" name="credits-button" class="horror-button"/>
     </ui:VisualElement>
     <ui:VisualElement name="settings-menu" style="flex-grow: 1; background-color: rgb(0, 0, 0); justify-content: center; align-self: auto; align-items: center; align-content: center; flex-basis: 20%; display: none; visibility: visible;">

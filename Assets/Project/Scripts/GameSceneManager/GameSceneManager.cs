@@ -50,14 +50,20 @@ public class GameSceneManager : MonoBehaviour
         while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
-            ProgressUpdated.Invoke(progress);
-            Debug.Log(progress);
 
             if (progress >= 0.9f)
             {
                 ProgressUpdated.Invoke(1);
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(4f);
                 operation.allowSceneActivation = true;
+            } else if (progress >= 0.6f)
+            {
+                yield return new WaitForSeconds(2f);
+                ProgressUpdated.Invoke(progress);
+            } else if (progress >= 0.3f)
+            {
+                yield return new WaitForSeconds(2f);
+                ProgressUpdated.Invoke(progress);
             }
 
             yield return null;

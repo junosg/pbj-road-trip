@@ -761,7 +761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PassingCarsManager
   _spawnDelay: 20
-  _spawnRate: 5
+  _spawnRate: 2
   _carPool: {fileID: 1743198906}
   _spawnPoints:
   - {fileID: 1728601453}
