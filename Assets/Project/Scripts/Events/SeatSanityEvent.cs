@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class SeatSanityEvent : SanityEvent
 {
-    [SerializeField] GhostScareController _ghostScareController;
+    [SerializeField] AudioClip _whisperClip;
+
+    private bool _isIgnored = false;
 
     public override void OnActivate()
     {
@@ -16,19 +18,28 @@ public class SeatSanityEvent : SanityEvent
 
     public override void OnIgnored()
     {
-        Debug.Log("triggered");
-
-        _ghostScareController.TriggerScare();
-        SanityManager.Instance.DecreaseSanity(5);
-        Deactivate();
+        _isIgnored = true;
+        SoundManager.Instance.PlaySingle(_whisperClip);
     }
 
     void Update()
     {
         if (Activated)
         {
-            SanityManager.Instance.DecreaseSanity(sanityDecreaseSpeed * Time.deltaTime);
-
+            if (_isIgnored)
+            {
+                if (SoundManager.Instance.IsSingleSourcePlaying())
+                {
+                    SanityManager.Instance.DecreaseSanity(sanityDecreaseSpeed * 2 * Time.deltaTime);
+                } else
+                {
+                    Deactivate();
+                }
+            } else
+            {
+                SanityManager.Instance.DecreaseSanity(sanityDecreaseSpeed * Time.deltaTime);
+            }
+            
             if (IsOnCamera())
             {
                 Deactivate();

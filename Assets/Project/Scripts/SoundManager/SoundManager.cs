@@ -9,6 +9,12 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioSource _sfxSource;
     [SerializeField] AudioSource _ambienceSource;
     [SerializeField] AudioSource _uiSource;
+    [SerializeField] AudioSource _singlePlaySource;
+
+    public const float DEFAULT_MUSIC_VOLUME = 0.25f;
+    public const float DEFAULT_SFX_VOLUME = 0.5f;
+    public const float DEFAULT_AMBIENCE_VOLUME = 0.25f;
+    public const float DEFAULT_UI_VOLUME = 0.5f;
 
     void Awake()
     {
@@ -55,24 +61,42 @@ public class SoundManager : MonoBehaviour
         _uiSource.Play();
     }
 
+    public void PlaySingle(AudioClip clip)
+    {
+        if (_singlePlaySource.clip == clip) return;
+
+        _singlePlaySource.clip = clip;
+        _singlePlaySource.Play();
+    }
+
     public void StopMusic()
     {
         _musicSource.Stop();
+        _singlePlaySource.clip = null;
     }
 
     public void StopSFX()
     {
         _sfxSource.Stop();
+        _singlePlaySource.clip = null;
     }
 
     public void StopAmbience()
     {
         _sfxSource.Stop();
+        _singlePlaySource.clip = null;
+    }
+
+    public void StopSingle()
+    {
+        _singlePlaySource.Stop();
+        _singlePlaySource.clip = null;
     }
 
     public void StopUI()
     {
         _uiSource.Stop();
+        _singlePlaySource.clip = null;
     }
 
     public void StopAll()
@@ -81,6 +105,7 @@ public class SoundManager : MonoBehaviour
         StopSFX();
         StopAmbience();
         StopUI();
+        StopSingle();
     }
 
     public void PlaySfxOneShot(AudioClip clip)
@@ -106,5 +131,30 @@ public class SoundManager : MonoBehaviour
     public void SetUIVolume(float value)
     {
         _uiSource.volume = value;
+    }
+
+    public void ResetMusicVolume()
+    {
+        SetMusicVolume(DEFAULT_MUSIC_VOLUME);
+    }
+
+    public void ResetSfxVolume()
+    {
+        SetSfxVolume(DEFAULT_SFX_VOLUME);
+    }
+
+    public void ResetAmbienceVolume()
+    {
+        SetAmbienceVolume(DEFAULT_AMBIENCE_VOLUME);
+    }
+
+    public void ResetUiVolume()
+    {
+        SetUIVolume(DEFAULT_UI_VOLUME);
+    }
+
+    public bool IsSingleSourcePlaying()
+    {
+        return _singlePlaySource.isPlaying;
     }
 }

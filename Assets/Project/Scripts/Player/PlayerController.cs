@@ -149,6 +149,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnGameOver()
     {
+        SoundManager.Instance.StopAll();
         gameObject.SetActive(false);
     }
 

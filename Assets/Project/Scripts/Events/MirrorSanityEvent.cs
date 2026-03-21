@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class MirrorSanityEvent : SanityEvent
 {
+    [SerializeField] GhostScareController _ghostScareController;
+
     public override void OnActivate()
     {
         transform.GetChild(0).gameObject.SetActive(true);
@@ -15,6 +17,9 @@ public class MirrorSanityEvent : SanityEvent
 
     public override void OnIgnored()
     {
+        _ghostScareController.TriggerScare();
+        SanityManager.Instance.DecreaseSanity(5);
+        Deactivate();
     }
 
     public void Update()

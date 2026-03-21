@@ -64,6 +64,8 @@ public abstract class SanityEvent: MonoBehaviour
             SoundManager.Instance.PlaySfx(_highSanityClip);
         }
 
+        SoundManager.Instance.SetSfxVolume(1f);
+
         OnActivate();
         StartCoroutine("Ignored", _secondsUntilIgnored);
     }
@@ -76,6 +78,7 @@ public abstract class SanityEvent: MonoBehaviour
         StopCoroutine("Ignored");
 
         if (SanityEventData.ActivatedCount <= 0) SoundManager.Instance.PlaySfx(_defaultClip);
+        SoundManager.Instance.ResetSfxVolume();
         OnDeactivate();
     }
 
@@ -102,6 +105,7 @@ public abstract class SanityEvent: MonoBehaviour
 
     private void OnGameOver()
     {
+        CancelInvoke("Ignored");
         gameObject.SetActive(false);
     }
 }
