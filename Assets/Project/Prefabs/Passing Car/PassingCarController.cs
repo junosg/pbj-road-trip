@@ -4,17 +4,27 @@ public class PassingCarController : MonoBehaviour
 {
     [SerializeField] float _speed;
 
+    private Rigidbody _rigidbody;
+    private bool _collided = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Vector3 velocity = new(0, 0,-_speed * Time.deltaTime);
+        if (_collided) return;
 
-        transform.position = transform.position + velocity;
+        Vector3 velocity = new(0, 0, -_speed);
+
+        _rigidbody.linearVelocity = velocity;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        _collided = true;
     }
 }

@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioClip _gameOverClip;
 
     private bool _isGameOver = false;
+    public bool IsGameOver { get { return _isGameOver; }}
 
     public UnityEvent GameOver = new();
 

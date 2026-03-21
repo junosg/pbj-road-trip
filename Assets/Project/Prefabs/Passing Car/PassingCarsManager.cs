@@ -14,6 +14,8 @@ public class PassingCarsManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("SpawnCar", _spawnDelay, _spawnRate);
+
+        GameManager.Instance.GameOver.AddListener(OnGameOver);
     }
 
     void Update()
@@ -43,5 +45,17 @@ public class PassingCarsManager : MonoBehaviour
 
         inactiveCars[carIndex].transform.position = _spawnPoints[spawnPointIndex].position;
         inactiveCars[carIndex].gameObject.SetActive(true);
+    }
+
+    void OnGameOver()
+    {
+        Transform[] cars = _carPool.GetComponentsInChildren<Transform>();
+
+        foreach(Transform car in cars)
+        {
+            car.gameObject.SetActive(false);
+        }
+
+        gameObject.SetActive(false);
     }
 }

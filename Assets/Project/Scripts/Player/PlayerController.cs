@@ -149,11 +149,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnGameOver()
     {
-        _move.Disable();
-        _look.Disable();
-        _inputActions.Disable();
+        gameObject.SetActive(false);
+    }
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+    void OnCollisionEnter(Collision collision)
+    {
+        GameManager.Instance.SetGameOver(GameOverType.CRASH);
     }
 }

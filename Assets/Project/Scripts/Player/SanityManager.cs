@@ -38,6 +38,11 @@ public class SanityManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        GameManager.Instance.GameOver.AddListener(OnGameOver);
+    }
+
     public void IncreaseSanity(float value)
     {
         _sanity += value;
@@ -95,5 +100,10 @@ public class SanityManager : MonoBehaviour
     public void PlayLowSanityAmbience()
     {
         SoundManager.Instance.PlayMusic(_lowSanityAmbience);
+    }
+
+    void OnGameOver()
+    {
+        gameObject.SetActive(false);
     }
 }
