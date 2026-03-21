@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -16,8 +17,9 @@ public class PlayerController : MonoBehaviour
     private InputAction _focus;
     private InputAction _radioToggle;
 
+    public UnityEvent RadioToggled = new();
+
     public bool _isViewing;
-    public bool _isTurnOff;
 
     public static PlayerController Instance { get; private set; }
     
@@ -66,6 +68,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         DisableMovement();
+
+        _radioToggle.performed += TurnOffRadio;
     }
 
     // Update is called once per frame
@@ -74,7 +78,6 @@ public class PlayerController : MonoBehaviour
         Move();
         Look();
         LookAtMirror();
-        TurnOffRadio();
     }
 
     void Move()
@@ -119,12 +122,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void TurnOffRadio()
+    public void TurnOffRadio(InputAction.CallbackContext context)
     {
-        if (_radioToggle.triggered)
-        {
-            _isTurnOff = true;
-        }
+        RadioToggled.Invoke();
     }
 
     public void DisableMovement()

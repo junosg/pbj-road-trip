@@ -1355,6 +1355,8 @@ Transform:
   m_Children:
   - {fileID: 1491055755}
   - {fileID: 454246604}
+  - {fileID: 1302267698}
+  - {fileID: 1075595152}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &419665181
@@ -1481,6 +1483,9 @@ MonoBehaviour:
   _moveLimit: {x: -6, y: 5}
   _lookTarget: {fileID: 454246603}
   _carMovingClip: {fileID: 8300000, guid: 60e150679d8c2454686e55fa91a5f0ab, type: 3}
+  RadioToggled:
+    m_PersistentCalls:
+      m_Calls: []
   _isViewing: 0
 --- !u!320 &419665186
 PlayableDirector:
@@ -3205,7 +3210,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 624906695}
-  - component: {fileID: 624906694}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -3213,18 +3217,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &624906694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624906693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f49e60b42fffbe24f85a05154162b547, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EventsManager
 --- !u!4 &624906695
 Transform:
   m_ObjectHideFlags: 0
@@ -5025,13 +5017,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075595150}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.35, y: 1.5500001, z: -9.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.35, y: 0.05000007, z: 0.019999504}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 768689159}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 419665180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1075595153
 MonoBehaviour:
@@ -5045,8 +5037,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fba903382c2be545a49adbaf9c8cbd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeatSanityEvent
-  _eventDelay: 10
-  _eventRepeatRate: 10
+  _eventDelay: 20
+  _eventRepeatRate: 7
+  _eventProbability: 0.75
   _lowSanityClip: {fileID: 8300000, guid: 2439501d50402bd46ad388b9e9010219, type: 3}
   _highSanityClip: {fileID: 8300000, guid: 45a5b8ce4e3e2d64cb5b54fa5d388813, type: 3}
   _defaultClip: {fileID: 8300000, guid: 60e150679d8c2454686e55fa91a5f0ab, type: 3}
@@ -6033,7 +6026,7 @@ GameObject:
   - component: {fileID: 1250444255}
   - component: {fileID: 1250444254}
   - component: {fileID: 1250444253}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6287,13 +6280,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302267696}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.12714, y: 2.73, z: -8.14285}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.12714, y: 1.23, z: 1.1271496}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1250444252}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 419665180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1302267699
 MonoBehaviour:
@@ -6307,12 +6300,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b0ca9ccf78a3548923780e15b3bb83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MirrorSanityEvent
-  _eventDelay: 5
+  _eventDelay: 15
   _eventRepeatRate: 5
+  _eventProbability: 0.5
   _lowSanityClip: {fileID: 8300000, guid: 2439501d50402bd46ad388b9e9010219, type: 3}
   _highSanityClip: {fileID: 8300000, guid: 45a5b8ce4e3e2d64cb5b54fa5d388813, type: 3}
   _defaultClip: {fileID: 8300000, guid: 60e150679d8c2454686e55fa91a5f0ab, type: 3}
-  sanityDecreaseSpeed: 3
+  sanityDecreaseSpeed: 1
 --- !u!1 &1417697583
 GameObject:
   m_ObjectHideFlags: 0
@@ -7633,6 +7627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RadioSanityEvent
   _eventDelay: 15
   _eventRepeatRate: 15
+  _eventProbability: 1
   _lowSanityClip: {fileID: 8300000, guid: 2439501d50402bd46ad388b9e9010219, type: 3}
   _highSanityClip: {fileID: 8300000, guid: 45a5b8ce4e3e2d64cb5b54fa5d388813, type: 3}
   _defaultClip: {fileID: 8300000, guid: 60e150679d8c2454686e55fa91a5f0ab, type: 3}
@@ -7804,8 +7799,6 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 419665180}
-  - {fileID: 1075595152}
-  - {fileID: 1302267698}
   - {fileID: 2049942928}
   - {fileID: 603859924}
   - {fileID: 103925994}

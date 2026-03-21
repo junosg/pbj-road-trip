@@ -38,12 +38,6 @@ public class SanityManager : MonoBehaviour
         }
     }
 
-    // void Start()
-    // {
-    //     SoundManager.Instance.SetMusicVolume(0.1f);
-    //     SoundManager.Instance.SetAmbienceVolume(0.1f);
-    // }
-
     public void IncreaseSanity(float value)
     {
         _sanity += value;

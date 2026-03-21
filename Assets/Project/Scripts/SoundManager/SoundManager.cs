@@ -49,8 +49,15 @@ public class SoundManager : MonoBehaviour
 
     public void PlayUI(AudioClip clip)
     {
+        if (_uiSource.clip == clip) return;
+
         _uiSource.clip = clip;
-        _sfxSource.Play();
+        _uiSource.Play();
+    }
+
+    public void StopUI()
+    {
+        _uiSource.Stop();
     }
 
     public void PlaySfxOneShot(AudioClip clip)

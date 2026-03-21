@@ -1,6 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
+public static class SanityEventData
+{
+    public static int ActivatedCount = 0;
+}
+
 public abstract class SanityEvent: MonoBehaviour
 {
     [Tooltip("Delay before event starts in seconds.")]
@@ -8,6 +13,8 @@ public abstract class SanityEvent: MonoBehaviour
 
     [Tooltip("Frequency of the event in seconds.")]
     [SerializeField] float _eventRepeatRate = 5;
+    [Range(0, 1)]
+    [SerializeField] float _eventProbability = 1;
 
     [SerializeField] AudioClip _lowSanityClip;
     [SerializeField] AudioClip _highSanityClip;
@@ -16,7 +23,16 @@ public abstract class SanityEvent: MonoBehaviour
     public float sanityDecreaseSpeed = 1f;
 
     private bool _activated;
-    public bool Activated { get { return _activated; } set => _activated = value; }
+    public bool Activated { get { return _activated; } }
+
+    private float _timeStarted;
+    public float TimeDuration
+    {
+        get
+        {
+            return Time.deltaTime - _timeStarted;
+        }
+    }
 
     void Start()
     {
@@ -26,7 +42,10 @@ public abstract class SanityEvent: MonoBehaviour
     public void Activate()
     {
         if (_activated) return;
+        if (Random.Range(0, 1) > _eventProbability) return;
+
         _activated = true;
+        SanityEventData.ActivatedCount += 1;
 
         if (SanityManager.Instance.Sanity < SanityManager.LOW_SANITY_THRESHOLD)
         {
@@ -43,7 +62,9 @@ public abstract class SanityEvent: MonoBehaviour
     {
         if (!_activated) return;
         _activated = false;
-        SoundManager.Instance.PlaySfx(_defaultClip);
+        SanityEventData.ActivatedCount -= 1;
+
+        if (SanityEventData.ActivatedCount <= 0) SoundManager.Instance.PlaySfx(_defaultClip);
         OnDeactivate();
     }
 

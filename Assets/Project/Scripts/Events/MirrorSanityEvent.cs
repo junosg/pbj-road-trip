@@ -19,7 +19,7 @@ public class MirrorSanityEvent : SanityEvent
         {
             SanityManager.Instance.DecreaseSanity(sanityDecreaseSpeed * Time.deltaTime);
 
-            if (PlayerController.Instance._isViewing)
+            if (IsOnCamera())
             {
                 Deactivate();
             }

@@ -7,25 +7,24 @@ public class RadioSanityEvent : SanityEvent
     
     public override void OnActivate()
     {
-        SoundManager.Instance.PlayMusic(radioSanitySound);
+        SoundManager.Instance.PlayUI(radioSanitySound);
     }
 
     public override void OnDeactivate()
     {
-        Activated = false;
+        SoundManager.Instance.StopUI();
+    }
+
+    void Start()
+    {
+        PlayerController.Instance.RadioToggled.AddListener(Deactivate);
     }
 
     public void Update()
     {
         if (Activated)
         {
-            PlayerController.Instance._isTurnOff = false;
             SanityManager.Instance.DecreaseSanity(sanityDecreaseSpeed * Time.deltaTime);
-
-            if (PlayerController.Instance._isTurnOff)
-            {
-                Deactivate();
-            }
         }
     }
     
