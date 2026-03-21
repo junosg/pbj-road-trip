@@ -27,7 +27,7 @@ public class TimerController : MonoBehaviour
 
     public void StartTimer()
     {
-        TimerUpdated.Invoke(0);
+        TimerUpdated.Invoke(1);
     }
 
 
