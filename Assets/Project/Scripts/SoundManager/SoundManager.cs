@@ -55,9 +55,32 @@ public class SoundManager : MonoBehaviour
         _uiSource.Play();
     }
 
+    public void StopMusic()
+    {
+        _musicSource.Stop();
+    }
+
+    public void StopSFX()
+    {
+        _sfxSource.Stop();
+    }
+
+    public void StopAmbience()
+    {
+        _sfxSource.Stop();
+    }
+
     public void StopUI()
     {
         _uiSource.Stop();
+    }
+
+    public void StopAll()
+    {
+        StopMusic();
+        StopSFX();
+        StopAmbience();
+        StopUI();
     }
 
     public void PlaySfxOneShot(AudioClip clip)

@@ -70,6 +70,11 @@ public class SanityManager : MonoBehaviour
         }
 
         SanityUpdated.Invoke(_sanity);
+
+        if (_sanity <= MIN_SANITY)
+        {
+            GameManager.Instance.SetGameOver(GameOverType.SANITY);
+        }
     }
 
     public void PlayHighSanityBGM()

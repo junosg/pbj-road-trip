@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
         DisableMovement();
 
         _radioToggle.performed += TurnOffRadio;
+        GameManager.Instance.GameOver.AddListener(OnGameOver);
     }
 
     // Update is called once per frame
@@ -144,5 +145,15 @@ public class PlayerController : MonoBehaviour
     public void PlayCarMovingClip()
     {
         SoundManager.Instance.PlaySfx(_carMovingClip);
+    }
+
+    private void OnGameOver()
+    {
+        _move.Disable();
+        _look.Disable();
+        _inputActions.Disable();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
