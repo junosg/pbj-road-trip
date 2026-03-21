@@ -26,6 +26,7 @@ public class HUDController : MonoBehaviour
         if (TimerController.Instance)
         {
             Debug.Log("Timer Exists");
+            TimerController.Instance.TimerUpdated.AddListener(SetTimer);
         }
     }
 
