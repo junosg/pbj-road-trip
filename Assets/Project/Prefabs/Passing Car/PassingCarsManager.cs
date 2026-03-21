@@ -18,19 +18,6 @@ public class PassingCarsManager : MonoBehaviour
         GameManager.Instance.GameOver.AddListener(OnGameOver);
     }
 
-    void Update()
-    {
-        Transform[] cars = _carPool.GetComponentsInChildren<Transform>(true);
-
-        foreach(Transform car in cars)
-        {
-            if (Vector3.Distance(transform.position, car.position) >  400)
-            {
-                car.gameObject.SetActive(false);
-            }
-        }
-    }
-
     void SpawnCar()
     {
         Transform[] cars = _carPool.GetComponentsInChildren<Transform>(true);
