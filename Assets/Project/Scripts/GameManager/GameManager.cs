@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     private Button _exitButton;
 
     [SerializeField] AudioClip _gameOverClip;
+    [SerializeField] AudioClip _clickClip;
+    [SerializeField] AudioClip _hoverClip;
 
     private bool _isGameOver = false;
     public bool IsGameOver { get { return _isGameOver; }}
@@ -48,6 +50,9 @@ public class GameManager : MonoBehaviour
 
         _retryButton.clicked += OnRetry;
         _exitButton.clicked += OnExit;
+
+        _retryButton.RegisterCallback<PointerEnterEvent>(OnHover);
+        _exitButton.RegisterCallback<PointerEnterEvent>(OnHover);
     }
 
     public void SetGameOver(GameOverType gameOverType)
@@ -72,11 +77,18 @@ public class GameManager : MonoBehaviour
 
     private void OnRetry()
     {
+        SoundManager.Instance.PlaySfxOneShot(_clickClip);
         GameSceneManager.Instance.SmoothLoadScene(GameSceneManager.GAME_SCENE_INDEX);
     }
 
     private void OnExit()
     {
+        SoundManager.Instance.PlaySfxOneShot(_clickClip);
         GameSceneManager.Instance.SmoothLoadScene(GameSceneManager.MENU_SCENE_INDEX);
+    }
+
+    private void OnHover(PointerEnterEvent evt)
+    {
+        SoundManager.Instance.PlaySfxOneShot(_hoverClip);
     }
 }
