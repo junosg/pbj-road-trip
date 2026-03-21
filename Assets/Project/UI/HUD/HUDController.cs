@@ -12,6 +12,7 @@ public class HUDController : MonoBehaviour
         _hudDocument = GetComponent<UIDocument>();
 
         _sanityBarFill = _hudDocument.rootVisualElement.Q<VisualElement>("sanity-bar-fill");
+        _sanityBarFill.style.backgroundColor = Color.green;
 
         if (SanityManager.Instance)
         {

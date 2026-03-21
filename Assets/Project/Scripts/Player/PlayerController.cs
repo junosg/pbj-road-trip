@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _lookspeed = 100f;
     [SerializeField] Vector2 _moveLimit;
     [SerializeField] GameObject _lookTarget;
+    [SerializeField] GameObject _focusTarget;
 
     [SerializeField] AudioClip _carMovingClip;
     [SerializeField] SteeringWheelController _steeringWheel;
@@ -106,10 +107,9 @@ public class PlayerController : MonoBehaviour
 
             if (_isViewing == false)
             {
-                Vector3 mirrorPosition = new Vector3(0.7f, 0.7f, 1f);
                 
-                _lookTarget.transform.localPosition = mirrorPosition;
-                _lookTarget.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                _lookTarget.transform.LookAt(_focusTarget.transform);
+                CameraManager.Instance.ZoomIn();
                 _look.Disable();
                 _isViewing = true;
             }
@@ -119,6 +119,7 @@ public class PlayerController : MonoBehaviour
 
                 _lookTarget.transform.localPosition = resetPosition;
                 _lookTarget.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                CameraManager.Instance.ZoomOut();
                 _look.Enable();
                 _isViewing = false;
             }
