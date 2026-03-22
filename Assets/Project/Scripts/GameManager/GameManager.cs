@@ -127,5 +127,10 @@ public class GameManager : MonoBehaviour
         int minutes = Mathf.FloorToInt(value / 60);
         int seconds = Mathf.FloorToInt(value % 60);
         _scoreValueElement.text = $"{minutes:00}:{seconds:00}";
+
+        if (LeaderboardManager.Instance)
+        {
+            StartCoroutine(LeaderboardManager.Instance.SubmitScore(PlayerDataManager.Instance.PlayerName, _scoreValueElement.text));
+        }
     }
 }

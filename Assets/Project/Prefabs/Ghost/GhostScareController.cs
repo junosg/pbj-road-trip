@@ -5,6 +5,7 @@ public class GhostScareController : MonoBehaviour
 {
     [SerializeField] Texture2D _highSanityGhost;
     [SerializeField] Texture2D _lowSanityGhost;
+    [SerializeField] AudioClip _screamClip;
 
     private Animator _animator;
     private RawImage _rawImage;
@@ -21,6 +22,7 @@ public class GhostScareController : MonoBehaviour
     public void TriggerScare()
     {
         _animator.SetTrigger("Scare");
+        SoundManager.Instance.PlaySfxOneShot(_screamClip);
     }
 
     private void OnSanityUpdated(float value)

@@ -3,6 +3,7 @@ using UnityEngine;
 public class SeatSanityEvent : SanityEvent
 {
     [SerializeField] AudioClip _whisperClip;
+    [SerializeField] AudioSource _whisperSource;
 
     private bool _isIgnored = false;
 
@@ -19,7 +20,7 @@ public class SeatSanityEvent : SanityEvent
     public override void OnIgnored()
     {
         _isIgnored = true;
-        SoundManager.Instance.PlaySingle(_whisperClip);
+        _whisperSource.PlayOneShot(_whisperClip);
     }
 
     void Update()
@@ -28,7 +29,7 @@ public class SeatSanityEvent : SanityEvent
         {
             if (_isIgnored)
             {
-                if (SoundManager.Instance.IsSingleSourcePlaying())
+                if (_whisperSource.isPlaying)
                 {
                     SanityManager.Instance.DecreaseSanity(sanityDecreaseSpeed * 2 * Time.deltaTime);
                 } else
