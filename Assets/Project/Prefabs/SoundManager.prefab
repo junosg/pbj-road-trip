@@ -569,7 +569,7 @@ MonoBehaviour:
   _sfxSource: {fileID: 5191535150332087598}
   _ambienceSource: {fileID: 3677353729907498258}
   _uiSource: {fileID: 5809893730395105598}
-  _singlePlaySource: {fileID: 0}
+  _singlePlaySource: {fileID: 1286977647201054754}
 --- !u!1 &8369067234378941621
 GameObject:
   m_ObjectHideFlags: 0

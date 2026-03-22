@@ -8,9 +8,9 @@ using UnityEngine.SceneManagement;
 public class GameSceneManager : MonoBehaviour
 {
     public static GameSceneManager Instance;
-    public const int MENU_SCENE_INDEX = 0;
-    public const int LOADING_SCENE_INDEX = 1;
-    public const int GAME_SCENE_INDEX = 2;
+    public const int MENU_SCENE_INDEX = 1;
+    public const int LOADING_SCENE_INDEX = 2;
+    public const int GAME_SCENE_INDEX = 3;
 
     private int _sceneToLoadIndex;
 
