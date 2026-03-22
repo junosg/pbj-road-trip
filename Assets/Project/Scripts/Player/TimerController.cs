@@ -20,6 +20,11 @@ public class TimerController : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        GameManager.Instance.GameOver.AddListener(OnGameOver);
+    }
+
     void Update()
     {
         StartTimer();
@@ -32,5 +37,10 @@ public class TimerController : MonoBehaviour
 
         _timeCount += Time.deltaTime;
         TimerUpdated.Invoke(_timeCount);
+    }
+
+    void OnGameOver()
+    {
+        GameManager.Instance.SetGameOverScore(_timeCount);
     }
 }

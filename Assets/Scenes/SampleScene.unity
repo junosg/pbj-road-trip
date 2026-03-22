@@ -6735,6 +6735,8 @@ MonoBehaviour:
   _gameOverClip: {fileID: 8300000, guid: 6b47ca2a63d50064abc719243cd8949f, type: 3}
   _clickClip: {fileID: 8300000, guid: 70d86d3d7211c034a971b03b3d36d6f4, type: 3}
   _hoverClip: {fileID: 8300000, guid: f0d3d9ea0c9705f47905d1d645a6a32c, type: 3}
+  _pauseClip: {fileID: 8300000, guid: e86ce95e3d05f7c40b36e684f85efe71, type: 3}
+  _unpauseClip: {fileID: 8300000, guid: 6de0fadcd7c7b3141bfc1ae0a8eee829, type: 3}
   GameOver:
     m_PersistentCalls:
       m_Calls: []

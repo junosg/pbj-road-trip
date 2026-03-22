@@ -67,7 +67,11 @@ public abstract class SanityEvent: MonoBehaviour
         SoundManager.Instance.SetSfxVolume(1f);
 
         OnActivate();
-        StartCoroutine("Ignored", _secondsUntilIgnored);
+
+        if (gameObject.activeSelf)
+        {
+            StartCoroutine("Ignored", _secondsUntilIgnored);
+        }
     }
 
     public void Deactivate()

@@ -16,12 +16,17 @@ public class GameManager : MonoBehaviour
     private VisualElement _gameOverElement;
     private VisualElement _sanityOverElement;
     private VisualElement _crashOverElement;
+    private VisualElement _scoreElement;
+    private Label _scoreValueElement;
+
     private Button _retryButton;
     private Button _exitButton;
 
     [SerializeField] AudioClip _gameOverClip;
     [SerializeField] AudioClip _clickClip;
     [SerializeField] AudioClip _hoverClip;
+    [SerializeField] AudioClip _pauseClip;
+    [SerializeField] AudioClip _unpauseClip;
 
     private bool _isGameOver = false;
     public bool IsGameOver { get { return _isGameOver; }}
@@ -47,6 +52,8 @@ public class GameManager : MonoBehaviour
         _gameOverElement = _gameOverDocument.rootVisualElement.Q<VisualElement>("game-over");
         _sanityOverElement = _gameOverDocument.rootVisualElement.Q<VisualElement>("game-over-sanity");
         _crashOverElement = _gameOverDocument.rootVisualElement.Q<VisualElement>("game-over-crash");
+        _scoreElement = _gameOverDocument.rootVisualElement.Q<VisualElement>("game-over-score");
+        _scoreValueElement = _gameOverDocument.rootVisualElement.Q<Label>("game-over-score-value");
         _retryButton = _gameOverDocument.rootVisualElement.Q<Button>("retry-button");
         _exitButton = _gameOverDocument.rootVisualElement.Q<Button>("exit-button");
 
@@ -63,6 +70,7 @@ public class GameManager : MonoBehaviour
         _isGameOver = true;
 
         _gameOverElement.style.display = DisplayStyle.Flex;
+        _scoreElement.style.display = DisplayStyle.Flex;
         SoundManager.Instance.StopAll();
         SoundManager.Instance.PlaySfxOneShot(_gameOverClip);
 
@@ -82,6 +90,7 @@ public class GameManager : MonoBehaviour
         if (_isPaused) return;
         _isPaused = true;
 
+        SoundManager.Instance.PlaySfxOneShot(_pauseClip);
         SoundManager.Instance.PauseAll();
         _gameOverElement.style.display = DisplayStyle.Flex;
     }
@@ -91,6 +100,7 @@ public class GameManager : MonoBehaviour
         if (!_isPaused) return;
         _isPaused = false;
         
+        SoundManager.Instance.PlaySfxOneShot(_unpauseClip);
         SoundManager.Instance.ResumeAll();
         _gameOverElement.style.display = DisplayStyle.None;
     }
@@ -110,5 +120,12 @@ public class GameManager : MonoBehaviour
     private void OnHover(PointerEnterEvent evt)
     {
         SoundManager.Instance.PlaySfxOneShot(_hoverClip);
+    }
+
+    public void SetGameOverScore(float value)
+    {
+        int minutes = Mathf.FloorToInt(value / 60);
+        int seconds = Mathf.FloorToInt(value % 60);
+        _scoreValueElement.text = $"{minutes:00}:{seconds:00}";
     }
 }

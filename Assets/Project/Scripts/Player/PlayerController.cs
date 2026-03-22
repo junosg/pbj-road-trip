@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_isViewing == false)
         {
-            Vector3 mirrorPosition = new(0.604f, 0.957f, 0f);
+            Vector3 mirrorPosition = new(0.604f, 1.2f, 0f);
 
             _lookTarget.transform.localPosition = mirrorPosition;
             _lookTarget.transform.LookAt(_focusTarget.transform);
