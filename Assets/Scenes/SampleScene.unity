@@ -7517,6 +7517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa8cb52bd7ed38429df09725209ad9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HUDController
+  _highSanityFillColor: {r: 0.21406892, g: 0.4339623, b: 0.022516914, a: 0.627451}
+  _lowSanityFillColor: {r: 0.5660378, g: 0.045389827, b: 0.045389827, a: 0.627451}
 --- !u!1 &1613950918
 GameObject:
   m_ObjectHideFlags: 0

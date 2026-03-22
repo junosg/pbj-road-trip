@@ -5,6 +5,9 @@ public class HUDController : MonoBehaviour
 {
     UIDocument _hudDocument;
     VisualElement _sanityBarFill;
+
+    [SerializeField] Color _highSanityFillColor;
+    [SerializeField] Color _lowSanityFillColor;
     Label _timer;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -12,9 +15,7 @@ public class HUDController : MonoBehaviour
     {
         _hudDocument = GetComponent<UIDocument>();
 
-        _sanityBarFill = _hudDocument.rootVisualElement.Q<VisualElement>("sanity-bar-fill");
-        _sanityBarFill.style.backgroundColor = Color.green;
-        
+        _sanityBarFill = _hudDocument.rootVisualElement.Q<VisualElement>("sanity-bar-fill");        
         _timer = _hudDocument.rootVisualElement.Q<Label>("timer");
 
         if (SanityManager.Instance)
@@ -34,8 +35,8 @@ public class HUDController : MonoBehaviour
     {
         Length widthLength = new(value, LengthUnit.Percent);
 
-        if (value > 40) _sanityBarFill.style.backgroundColor = Color.green;
-        else  _sanityBarFill.style.backgroundColor = Color.red;
+        if (value > 40) _sanityBarFill.style.backgroundColor = _highSanityFillColor;
+        else  _sanityBarFill.style.backgroundColor = _lowSanityFillColor;
 
         _sanityBarFill.style.width = widthLength;
     }

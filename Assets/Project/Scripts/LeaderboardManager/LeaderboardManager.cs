@@ -135,9 +135,9 @@ public class LeaderboardManager : MonoBehaviour
                 top10.Add(new(){player = entry.Value.player, time = entry.Value.time, id = entry.Key});
             }
             
-            top10.Sort((a, b) => b.time.CompareTo(a.time));
+            _topTen.Clear();
+            _topTen = top10.OrderByDescending((score) => float.Parse(score.time)).ToList();
 
-            _topTen = top10;
             TopTenUpdated.Invoke(_topTen);
 
             Debug.Log(_topTen.First().player);
