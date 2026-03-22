@@ -5,10 +5,14 @@
         <ui:Button text="Leaderboard" name="leaderboard-button" class="horror-button"/>
         <ui:Button text="Credits" name="credits-button" class="horror-button"/>
     </ui:VisualElement>
-    <ui:VisualElement name="settings-menu" style="flex-grow: 1; background-color: rgb(0, 0, 0); justify-content: center; align-self: auto; align-items: center; align-content: center; flex-basis: 20%; display: none; visibility: visible;">
-        <ui:Slider label="Music Volume&#10;" value="100" high-value="100" name="music-volume-slider" style="color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0); flex-direction: row; font-size: 20px; -unity-font-style: bold; flex-grow: 0; flex-wrap: nowrap; width: 30%; height: auto; align-items: center;"/>
-        <ui:Slider label="SFX Volume&#10;" value="100" high-value="100" name="sfx-volume-slider" style="color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0); flex-direction: row; font-size: 20px; -unity-font-style: bold; flex-grow: 0; flex-wrap: nowrap; width: 30%; height: auto; align-items: center;"/>
-        <ui:Slider label="UI Volume&#10;" value="100" high-value="100" name="ui-volume-slider" style="color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0); flex-direction: row; font-size: 20px; -unity-font-style: bold; flex-grow: 0; flex-wrap: nowrap; width: 30%; height: auto; align-items: center;"/>
-        <ui:Button text="Back&#10;" name="settings-back-button" class="horror-button" style="position: absolute; bottom: 0; right: 0; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px;"/>
+    <ui:VisualElement name="leaderboard-menu" style="flex-grow: 1; background-color: rgb(0, 0, 0); justify-content: flex-start; align-self: auto; align-items: center; align-content: center; flex-basis: 20%; display: none; visibility: visible;">
+        <ui:Label text="Top 10" style="font-size: 60px; color: rgb(255, 255, 255);"/>
+        <ui:MultiColumnListView columns="" sort-column-descriptions="" name="leaderboard" virtualization-method="DynamicHeight" binding-source-selection-mode="AutoAssign" style="width: 60%; color: rgb(250, 0, 0); font-size: 30px;">
+            <ui:Columns primary-column-name="player" reorderable="false" resizable="false" stretch-mode="Grow">
+                <ui:Column name="player" title="Player" width="50%" binding-path="player"/>
+                <ui:Column name="time" title="Time" width="50%" binding-path="time"/>
+            </ui:Columns>
+        </ui:MultiColumnListView>
+        <ui:Button text="Back&#10;" name="leaderboard-back-button" class="horror-button" style="position: absolute; bottom: 0; right: 0; margin-top: 20px; margin-right: 20px; margin-bottom: 20px; margin-left: 20px; align-self: flex-end;"/>
     </ui:VisualElement>
 </ui:UXML>

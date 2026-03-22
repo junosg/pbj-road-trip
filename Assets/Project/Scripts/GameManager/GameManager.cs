@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
 
         if (LeaderboardManager.Instance)
         {
-            StartCoroutine(LeaderboardManager.Instance.SubmitScore(PlayerDataManager.Instance.PlayerName, _scoreValueElement.text));
+            StartCoroutine(LeaderboardManager.Instance.SubmitScore(PlayerDataManager.Instance.PlayerName, value));
         }
     }
 }

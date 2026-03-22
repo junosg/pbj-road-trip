@@ -603,7 +603,7 @@ GameObject:
   - component: {fileID: 2018509348}
   - component: {fileID: 2018509347}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: LeaderboardManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
