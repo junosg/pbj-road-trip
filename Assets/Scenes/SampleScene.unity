@@ -8821,9 +8821,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhostScare
       objectReference: {fileID: 0}
+    - target: {fileID: 7097583429716873434, guid: fb2a711bab5e87747b7b7c785ac8a866, type: 3}
+      propertyPath: _lowSanityGhost
+      value: 
+      objectReference: {fileID: 2800000, guid: 97f4bdc2c0c45684e8ec64f694e74ce4, type: 3}
+    - target: {fileID: 7097583429716873434, guid: fb2a711bab5e87747b7b7c785ac8a866, type: 3}
+      propertyPath: _highSanityGhost
+      value: 
+      objectReference: {fileID: 2800000, guid: 76685418bd270cc4085ed90ed0d42d99, type: 3}
+    - target: {fileID: 9106873011379646399, guid: fb2a711bab5e87747b7b7c785ac8a866, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9106873011379646399, guid: fb2a711bab5e87747b7b7c785ac8a866, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9106873011379646399, guid: fb2a711bab5e87747b7b7c785ac8a866, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9106873011379646399, guid: fb2a711bab5e87747b7b7c785ac8a866, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 9106873011379646399, guid: fb2a711bab5e87747b7b7c785ac8a866, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9106873011379646399, guid: fb2a711bab5e87747b7b7c785ac8a866, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

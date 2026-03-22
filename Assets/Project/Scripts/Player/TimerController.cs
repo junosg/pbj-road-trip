@@ -28,9 +28,9 @@ public class TimerController : MonoBehaviour
 
     void StartTimer()
     {
+        if (GameManager.Instance.IsPaused || GameManager.Instance.IsPaused) return;
+
         _timeCount += Time.deltaTime;
         TimerUpdated.Invoke(_timeCount);
     }
-
-
 }
