@@ -1644,7 +1644,9 @@ MonoBehaviour:
   RadioToggled:
     m_PersistentCalls:
       m_Calls: []
-  _isViewing: 0
+  MirrorFocused:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!320 &419665186
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -5152,7 +5154,6 @@ MonoBehaviour:
   TimerUpdated:
     m_PersistentCalls:
       m_Calls: []
-  FinalTime: 
 --- !u!4 &893063838
 Transform:
   m_ObjectHideFlags: 0
@@ -5604,7 +5605,7 @@ MonoBehaviour:
   _eventDelay: 20
   _eventRepeatRate: 7
   _eventProbability: 0.75
-  _secondsUntilIgnored: 3
+  _secondsUntilIgnored: 10
   _lowSanityClip: {fileID: 8300000, guid: 2439501d50402bd46ad388b9e9010219, type: 3}
   _highSanityClip: {fileID: 8300000, guid: 45a5b8ce4e3e2d64cb5b54fa5d388813, type: 3}
   _defaultClip: {fileID: 8300000, guid: 60e150679d8c2454686e55fa91a5f0ab, type: 3}
@@ -6950,12 +6951,13 @@ MonoBehaviour:
   _eventDelay: 15
   _eventRepeatRate: 5
   _eventProbability: 0.5
-  _secondsUntilIgnored: 3
+  _secondsUntilIgnored: 10
   _lowSanityClip: {fileID: 8300000, guid: 2439501d50402bd46ad388b9e9010219, type: 3}
   _highSanityClip: {fileID: 8300000, guid: 45a5b8ce4e3e2d64cb5b54fa5d388813, type: 3}
   _defaultClip: {fileID: 8300000, guid: 60e150679d8c2454686e55fa91a5f0ab, type: 3}
   sanityDecreaseSpeed: 1
   _ghostScareController: {fileID: 3918826231211098540}
+  _delayUntilResolved: 2
 --- !u!1 &1369514168
 GameObject:
   m_ObjectHideFlags: 0

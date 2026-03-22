@@ -25,7 +25,9 @@ public class GameManager : MonoBehaviour
 
     private bool _isGameOver = false;
     public bool IsGameOver { get { return _isGameOver; }}
-
+    private bool _isPaused = false;
+    public bool IsPaused { get { return _isPaused; }}
+    
     public UnityEvent GameOver = new();
 
     void Awake()
@@ -73,6 +75,24 @@ public class GameManager : MonoBehaviour
         }
 
         GameOver.Invoke();
+    }
+
+    public void PauseGame()
+    {
+        if (_isPaused) return;
+        _isPaused = true;
+
+        SoundManager.Instance.PauseAll();
+        _gameOverElement.style.display = DisplayStyle.Flex;
+    }
+
+    public void UnpauseGame()
+    {
+        if (!_isPaused) return;
+        _isPaused = false;
+        
+        SoundManager.Instance.ResumeAll();
+        _gameOverElement.style.display = DisplayStyle.None;
     }
 
     private void OnRetry()

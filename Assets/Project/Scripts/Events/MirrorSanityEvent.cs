@@ -4,10 +4,12 @@ using UnityEngine;
 public class MirrorSanityEvent : SanityEvent
 {
     [SerializeField] GhostScareController _ghostScareController;
+    [SerializeField] float _delayUntilResolved = 3f;
 
     public override void OnActivate()
     {
         transform.GetChild(0).gameObject.SetActive(true);
+        PlayerController.Instance.MirrorFocused.AddListener(OnMirrorFocused);
     }
 
     public override void OnDeactivate()
@@ -32,6 +34,17 @@ public class MirrorSanityEvent : SanityEvent
             {
                 Deactivate();
             }
+        }
+    }
+
+    public void OnMirrorFocused(bool value)
+    {
+        if (value)
+        {
+            Invoke("Deactivate", _delayUntilResolved);
+        } else
+        {
+            CancelInvoke("Deactivate");
         }
     }
 }

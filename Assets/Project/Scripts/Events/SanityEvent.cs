@@ -43,7 +43,7 @@ public abstract class SanityEvent: MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("Activate", _eventDelay, _eventRepeatRate);
+        Invoke("Activate", _eventDelay);
         GameManager.Instance.GameOver.AddListener(OnGameOver);
     }
 
@@ -76,8 +76,10 @@ public abstract class SanityEvent: MonoBehaviour
         _activated = false;
         SanityEventData.ActivatedCount -= 1;
         StopCoroutine("Ignored");
+        Invoke("Activate", _eventRepeatRate);
 
         if (SanityEventData.ActivatedCount <= 0) SoundManager.Instance.PlaySfx(_defaultClip);
+
         SoundManager.Instance.ResetSfxVolume();
         OnDeactivate();
     }

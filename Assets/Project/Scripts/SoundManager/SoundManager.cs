@@ -157,4 +157,22 @@ public class SoundManager : MonoBehaviour
     {
         return _singlePlaySource.isPlaying;
     }
+
+    public void PauseAll()
+    {
+        _musicSource.Pause();
+        _sfxSource.Pause();
+        _ambienceSource.Pause();
+        _singlePlaySource.Pause();
+        _uiSource.Pause();
+    }
+
+    public void ResumeAll()
+    {
+        _musicSource.Play();
+        _sfxSource.Play();
+        _ambienceSource.Play();
+        _singlePlaySource.Play();
+        _uiSource.Play();
+    }
 }

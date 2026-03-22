@@ -483,6 +483,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2333276026312241331, guid: 2841349614f44d1489f3c20d7f1296b7, type: 3}
+      propertyPath: _singlePlaySource
+      value: 
+      objectReference: {fileID: 1355863458}
     - target: {fileID: 3677353729907498258, guid: 2841349614f44d1489f3c20d7f1296b7, type: 3}
       propertyPath: m_Volume
       value: 0.25
@@ -512,6 +516,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2841349614f44d1489f3c20d7f1296b7, type: 3}
+--- !u!82 &1355863458 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1286977647201054754, guid: 2841349614f44d1489f3c20d7f1296b7, type: 3}
+  m_PrefabInstance: {fileID: 1355863457}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1734312806
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +591,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MenuController
   _buttonClickClip: {fileID: 8300000, guid: ae5c6e219aa244d40bfc993ccdd89cac, type: 3}
   _buttonHoverClip: {fileID: 8300000, guid: f0d3d9ea0c9705f47905d1d645a6a32c, type: 3}
-  _menuBGM: {fileID: 8300000, guid: 1f1f085b76ed2604da9cffed9c3fdb48, type: 3}
+  _menuBGM: {fileID: 8300000, guid: ab908b45f82c791419f1387ccf56ab62, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

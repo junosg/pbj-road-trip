@@ -20,7 +20,7 @@ public class CameraManager : MonoBehaviour
 
     public void ZoomIn()
     {
-        _camera.Lens.FieldOfView = 30;
+        _camera.Lens.FieldOfView = 40;
     }
 
     public void ZoomOut()

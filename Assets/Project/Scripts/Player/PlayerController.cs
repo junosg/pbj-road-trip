@@ -18,10 +18,12 @@ public class PlayerController : MonoBehaviour
     private InputAction _look;
     private InputAction _focus;
     private InputAction _radioToggle;
+    private InputAction _pause;
 
     public UnityEvent RadioToggled = new();
+    public UnityEvent<bool> MirrorFocused = new();
 
-    public bool _isViewing;
+    private bool _isViewing;
 
     public static PlayerController Instance { get; private set; }
     
@@ -53,6 +55,9 @@ public class PlayerController : MonoBehaviour
         _radioToggle = _inputActions.Player.RadioToggle;
         _focus.Enable();
 
+        _pause = _inputActions.UI.Pause;
+        _pause.Enable();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -61,6 +66,9 @@ public class PlayerController : MonoBehaviour
     {
         _move.Disable();
         _look.Disable();
+        _radioToggle.Disable();
+        _focus.Disable();
+        _pause.Disable();
         _inputActions.Disable();
 
         Cursor.lockState = CursorLockMode.None;
@@ -72,6 +80,8 @@ public class PlayerController : MonoBehaviour
         DisableMovement();
 
         _radioToggle.performed += TurnOffRadio;
+        _focus.performed += LookAtMirror;
+        _pause.performed += OnPauseClicked;
         GameManager.Instance.GameOver.AddListener(OnGameOver);
     }
 
@@ -80,7 +90,6 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Look();
-        LookAtMirror();
     }
 
     void Move()
@@ -101,29 +110,29 @@ public class PlayerController : MonoBehaviour
         _lookTarget.transform.Rotate(_lookspeed * lookInput.x * Time.deltaTime * Vector3.up, Space.World);
     }
 
-    void LookAtMirror()
+    void LookAtMirror(InputAction.CallbackContext context)
     {
-        if (_focus.triggered)
+        if (_isViewing == false)
         {
+            Vector3 mirrorPosition = new(0.604f, 0.957f, 0f);
 
-            if (_isViewing == false)
-            {
-                
-                _lookTarget.transform.LookAt(_focusTarget.transform);
-                CameraManager.Instance.ZoomIn();
-                _look.Disable();
-                _isViewing = true;
-            }
-            else
-            {
-                Vector3 resetPosition = new Vector3(0f, 0.441f, 0f);
+            _lookTarget.transform.localPosition = mirrorPosition;
+            _lookTarget.transform.LookAt(_focusTarget.transform);
+            CameraManager.Instance.ZoomIn();
+            _look.Disable();
+            _isViewing = true;
+            MirrorFocused.Invoke(true);
+        }
+        else
+        {
+            Vector3 resetPosition = new Vector3(0f, 0.441f, 0f);
 
-                _lookTarget.transform.localPosition = resetPosition;
-                _lookTarget.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                CameraManager.Instance.ZoomOut();
-                _look.Enable();
-                _isViewing = false;
-            }
+            _lookTarget.transform.localPosition = resetPosition;
+            _lookTarget.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            CameraManager.Instance.ZoomOut();
+            _look.Enable();
+            _isViewing = false;
+            MirrorFocused.Invoke(false);
         }
     }
 
@@ -156,5 +165,30 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         GameManager.Instance.SetGameOver(GameOverType.CRASH);
+    }
+
+    void OnPauseClicked(InputAction.CallbackContext context)
+    {
+        if (GameManager.Instance.IsPaused)
+        {
+            Time.timeScale = 1;
+            _move.Enable();
+            _look.Enable();
+            _radioToggle.Enable();
+            _focus.Enable();
+            GameManager.Instance.UnpauseGame();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        } else
+        {
+            Time.timeScale = 0;
+            _move.Disable();
+            _look.Disable();
+            _radioToggle.Disable();
+            _focus.Disable();
+            GameManager.Instance.PauseGame();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 }
