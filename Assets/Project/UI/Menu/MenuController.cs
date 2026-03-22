@@ -15,6 +15,7 @@ public class MenuController : MonoBehaviour
     Button _leaderboardButton;
     Button _leaderboardBackButton;
     Button _creditsButton;
+    Button _quitButton;
     
     [SerializeField] AudioClip _buttonClickClip;
     [SerializeField] AudioClip _buttonHoverClip;
@@ -35,11 +36,13 @@ public class MenuController : MonoBehaviour
         _leaderboardButton = _menuDocument.rootVisualElement.Q<Button>("leaderboard-button");
         _leaderboardBackButton = _menuDocument.rootVisualElement.Q<Button>("leaderboard-back-button");
         _creditsButton = _menuDocument.rootVisualElement.Q<Button>("credits-button");
+        _quitButton = _menuDocument.rootVisualElement.Q<Button>("quit-button");
 
         _startButton.clicked += OnStartButtonClick;
         _leaderboardButton.clicked += OnLeaderboardButtonClick;
         _leaderboardBackButton.clicked += OnLeaderboardBackButtonClick;
         _creditsButton.clicked += OnCreditsButtonClick;
+        _quitButton.clicked += OnQuitButtonClick;
 
         _startButton.RegisterCallback<PointerEnterEvent>(OnButtonHover);
         _creditsButton.RegisterCallback<PointerEnterEvent>(OnButtonHover);
@@ -87,6 +90,11 @@ public class MenuController : MonoBehaviour
     void OnCreditsButtonClick()
     {
         SoundManager.Instance.PlaySfxOneShot(_buttonClickClip);
+    }
+
+    void OnQuitButtonClick()
+    {
+        Application.Quit();
     }
 
     void OnButtonHover(PointerEnterEvent evt)
