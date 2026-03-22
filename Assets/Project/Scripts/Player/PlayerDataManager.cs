@@ -5,7 +5,7 @@ public class PlayerDataManager : MonoBehaviour
 {
     public static PlayerDataManager Instance;
 
-    private string _playerName;
+    private string _playerName = "Player";
     public string PlayerName { get { return _playerName; }}
 
     void Awake()
