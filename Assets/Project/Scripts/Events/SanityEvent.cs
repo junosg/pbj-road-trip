@@ -69,6 +69,7 @@ public abstract class SanityEvent: MonoBehaviour
             SoundManager.Instance.PlaySfx(_highSanityClip);
         }
 
+        EffectsManager.Instance.SetAberration(0.5f);
         SoundManager.Instance.SetSfxVolume(1f);
 
         OnActivate();
@@ -89,7 +90,11 @@ public abstract class SanityEvent: MonoBehaviour
         StopCoroutine("Ignored");
         Invoke("Activate", _eventRepeatRate);
 
-        if (SanityEventData.ActivatedCount <= 0) SoundManager.Instance.PlaySfx(_defaultClip);
+        if (SanityEventData.ActivatedCount <= 0)
+        {
+            SoundManager.Instance.PlaySfx(_defaultClip);
+            EffectsManager.Instance.SetAberration(0);
+        }
 
         SoundManager.Instance.ResetSfxVolume();
         OnDeactivate();

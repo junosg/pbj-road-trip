@@ -7,6 +7,7 @@ public class EffectsManager : MonoBehaviour
     private Volume _volume;
     private LensDistortion _lensDistortionComponent;
     private Vignette _vignette;
+    private ChromaticAberration _aberration;
 
     public static EffectsManager Instance;
 
@@ -27,6 +28,7 @@ public class EffectsManager : MonoBehaviour
         _volume = GetComponent<Volume>();
         _volume.profile.TryGet(out _lensDistortionComponent);
         _volume.profile.TryGet(out _vignette);
+        _volume.profile.TryGet(out _aberration);
     }
 
     public void SetDistortionIntensity(float value)
@@ -37,5 +39,10 @@ public class EffectsManager : MonoBehaviour
     public void SetVignetteIntensity(float value)
     {
         _vignette.intensity.value = value;
+    }
+
+    public void SetAberration(float value)
+    {
+        _aberration.intensity.value = value;
     }
 }
