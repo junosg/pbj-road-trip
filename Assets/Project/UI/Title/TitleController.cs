@@ -8,6 +8,7 @@ public class TitleController : MonoBehaviour
 {
     [SerializeField] GameObject _titleLoad;
     [SerializeField] GameObject _panel;
+    [SerializeField] TMP_InputField _playerNameField;
     [SerializeField] Button _enterButton;
 
     void Start()
@@ -33,6 +34,7 @@ public class TitleController : MonoBehaviour
 
     private void OnEnterButtonClicked()
     {
+        PlayerDataManager.Instance.SetPlayerName(_playerNameField.text);
         SceneManager.LoadScene(GameSceneManager.MENU_SCENE_INDEX);
     }
 }
