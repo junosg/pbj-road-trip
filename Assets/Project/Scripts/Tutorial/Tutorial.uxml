@@ -1,0 +1,6 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; position: absolute; top: 516px; left: 766px; height: 475px; width: 364px;">
+        <ui:Label text="This is your sanity.&#10;Whenever a creature appears, it will start decreasing.&#10;When it reaches 0, it is game over." style="justify-content: flex-start; align-items: auto; -unity-text-align: middle-center; font-size: 40px; -unity-font-style: bold; color: rgb(255, 255, 255);"/>
+        <ui:VisualElement name="VisualElement" style="flex-grow: 1; position: relative; background-image: url(&quot;project://database/Assets/Project/Scripts/Tutorial/arrow-down.png?fileID=2800000&amp;guid=e9dc2b67edfb2fa44be4b1f4c7232a88&amp;type=3#arrow-down&quot;); width: auto; height: auto; top: 0; left: 0;"/>
+    </ui:VisualElement>
+</ui:UXML>

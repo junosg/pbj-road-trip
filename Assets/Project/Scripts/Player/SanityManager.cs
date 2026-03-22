@@ -74,6 +74,12 @@ public class SanityManager : MonoBehaviour
             SoundManager.Instance.PlayMusic(_lowSanityBGM);
         }
 
+        float vignetteValue = 1 - _sanity/100;
+        float lensDistortionValue = (1 - _sanity/100) * 0.5f;
+
+        EffectsManager.Instance.SetVignetteIntensity(vignetteValue);
+        EffectsManager.Instance.SetDistortionIntensity(lensDistortionValue);
+
         SanityUpdated.Invoke(_sanity);
 
         if (_sanity <= MIN_SANITY)

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.ProBuilder;
 
 public static class SanityEventData
@@ -36,6 +37,9 @@ public abstract class SanityEvent: MonoBehaviour
         }
     }
 
+    public UnityEvent SanityEventActivated = new();
+    public UnityEvent SanityEventDeactivated = new();
+
     void OnDisable()
     {
         StopCoroutine("Ignored");
@@ -52,6 +56,7 @@ public abstract class SanityEvent: MonoBehaviour
         if (_activated) return;
         if (Random.Range(0, 1) > _eventProbability) return;
 
+        SanityEventActivated.Invoke();
         _activated = true;
         _timeStarted = Time.deltaTime;
         SanityEventData.ActivatedCount += 1;
@@ -77,6 +82,8 @@ public abstract class SanityEvent: MonoBehaviour
     public void Deactivate()
     {
         if (!_activated) return;
+
+        SanityEventDeactivated.Invoke();
         _activated = false;
         SanityEventData.ActivatedCount -= 1;
         StopCoroutine("Ignored");
