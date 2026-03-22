@@ -6,6 +6,7 @@ public class TimerController : MonoBehaviour
 {
     public static TimerController Instance { get; set; }
     public UnityEvent<float> TimerUpdated = new();
+    private float _timeCount;
 
     public void Awake()
     {
@@ -25,9 +26,10 @@ public class TimerController : MonoBehaviour
     }
 
 
-    public void StartTimer()
+    void StartTimer()
     {
-        TimerUpdated.Invoke(1);
+        _timeCount += Time.deltaTime;
+        TimerUpdated.Invoke(_timeCount);
     }
 
 

@@ -42,7 +42,6 @@ public class HUDController : MonoBehaviour
 
     public void SetTimer(float time)
     {
-        time += Time.deltaTime;
         int minutes = Mathf.FloorToInt(time / 60);
         int seconds = Mathf.FloorToInt(time % 60);
         _timer.text = $"{minutes:00}:{seconds:00}";
