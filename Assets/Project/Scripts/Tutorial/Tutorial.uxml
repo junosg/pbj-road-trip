@@ -6,10 +6,10 @@
     </ui:VisualElement>
     <ui:VisualElement name="passenger-tutorial" class="tutorial tutorial-hidden" style="flex-grow: 1; scale: 1 1; position: absolute; top: auto; left: auto; width: 100%; display: none; transition-duration: 2s;">
         <ui:Label text="Passenger has appeared!" style="font-size: 40px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: middle-center; transition-property: all; transition-duration: 0s; transition-timing-function: ease; transition-delay: 0s;"/>
-        <ui:Label text="Look at it to make it disappear." style="font-size: 40px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: middle-center;"/>
+        <ui:Label text="Check beside you to make it disappear." style="font-size: 40px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: middle-center;"/>
     </ui:VisualElement>
     <ui:VisualElement name="stalker-tutorial" style="flex-grow: 1; top: auto; left: auto; position: absolute; width: 100%; transition-duration: 2s; display: none; scale: 1 1;">
         <ui:Label text="Stalker has appeared!" style="font-size: 40px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: middle-center; transition-property: all; transition-duration: 0s; transition-timing-function: ease; transition-delay: 0s;"/>
-        <ui:Label text="Focus (Left Mouse) on the mirror to make it disappear." style="font-size: 40px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: middle-center;"/>
+        <ui:Label text="Focus (Left Mouse) on the mirror until it vanish." style="font-size: 40px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: middle-center;"/>
     </ui:VisualElement>
 </ui:UXML>
