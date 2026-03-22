@@ -7,7 +7,7 @@
             <ui:Label text="Mouse - Look Around" style="font-size: 30px; color: rgb(255, 255, 255); -unity-font-style: normal;"/>
             <ui:Label text="Left Mouse - Focus Mirror" style="font-size: 30px; color: rgb(255, 255, 255); -unity-font-style: normal;"/>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 0; padding-top: 40px; padding-right: 40px; padding-bottom: 40px; padding-left: 40px; width: 100%; -unity-text-align: upper-center;">
+        <ui:VisualElement style="flex-grow: 1; padding-top: 40px; padding-right: 40px; padding-bottom: 40px; padding-left: 40px; width: 100%; -unity-text-align: upper-center;">
             <ui:Label text="Beware of the creatures in the mirror." style="font-size: 40px; color: rgb(255, 255, 255); -unity-font-style: normal; -unity-font-definition: resource(&quot;FlatSkin/Font/Roboto-LightItalic&quot;);"/>
             <ui:Label text="They want attention." style="font-size: 40px; color: rgb(255, 255, 255); -unity-font-style: normal; -unity-font-definition: resource(&quot;FlatSkin/Font/Roboto-LightItalic&quot;);"/>
             <ui:Label text="Don&apos;t ignore them or suffer the consequence." style="font-size: 50px; color: rgb(197, 60, 60); -unity-font-style: normal; -unity-font-definition: resource(&quot;FlatSkin/Font/Roboto-LightItalic&quot;);"/>
