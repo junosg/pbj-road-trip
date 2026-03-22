@@ -9,6 +9,8 @@ public class LoadingController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Time.timeScale = 1;
+
         _loadingDocument = GetComponent<UIDocument>();
         _loadingBarFill = _loadingDocument.rootVisualElement.Q<VisualElement>("loading-bar-fill");
 
