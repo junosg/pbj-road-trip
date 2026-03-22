@@ -1,0 +1,20 @@
+:root {
+}
+
+.tutorial {
+    scale: 1 1;
+    transition-duration: 3s;
+    transition-property: scale;
+    transition-timing-function: ease-out-back;
+}
+
+#stalker-tutorial.hidden {
+    scale: 0 0 0;
+    transition-duration: 3s;
+    transition-property: scale;
+    transition-timing-function: ease-out-back;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    visibility: visible;
+    background-size: 0% 0%;
+}

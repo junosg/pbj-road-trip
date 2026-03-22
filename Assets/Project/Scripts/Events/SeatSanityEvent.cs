@@ -4,12 +4,21 @@ public class SeatSanityEvent : SanityEvent
 {
     [SerializeField] AudioClip _whisperClip;
     [SerializeField] AudioSource _whisperSource;
+    [SerializeField] TutorialController _tutorialController;
+    private bool _tutorialTriggered = false;
 
     private bool _isIgnored = false;
 
     public override void OnActivate()
     {
         transform.GetChild(0).gameObject.SetActive(true);
+
+        if (_tutorialTriggered == false)
+        {
+            StartCoroutine(_tutorialController.DisplayPassengerTutorial(2));
+            _tutorialTriggered = true;
+        }
+        
     }
 
     public override void OnDeactivate()

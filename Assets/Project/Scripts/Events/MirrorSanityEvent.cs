@@ -5,11 +5,21 @@ public class MirrorSanityEvent : SanityEvent
 {
     [SerializeField] GhostScareController _ghostScareController;
     [SerializeField] float _delayUntilResolved = 3f;
+    [SerializeField] TutorialController _tutorialController;
+    private bool _tutorialTriggered = false;
 
     public override void OnActivate()
     {
         transform.GetChild(0).gameObject.SetActive(true);
         PlayerController.Instance.MirrorFocused.AddListener(OnMirrorFocused);
+
+        transform.GetChild(0).gameObject.SetActive(true);
+
+        if (_tutorialTriggered == false)
+        {
+            StartCoroutine(_tutorialController.DisplayStalkerTutorial(2f));
+            _tutorialTriggered = true;
+        }
     }
 
     public override void OnDeactivate()

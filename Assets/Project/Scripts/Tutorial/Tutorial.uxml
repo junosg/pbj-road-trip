@@ -1,6 +1,15 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="flex-grow: 1; position: absolute; top: 516px; left: 766px; height: 475px; width: 364px;">
+    <Style src="project://database/Assets/Project/Scripts/Tutorial/tutorial.uss?fileID=7433441132597879392&amp;guid=d43475118ba9f924cb4e686598855234&amp;type=3#tutorial"/>
+    <ui:VisualElement name="sanity-tutorial" style="flex-grow: 1; position: absolute; top: 516px; left: 766px; height: 475px; width: 364px; scale: 1 1; display: none; transition-duration: 2s;">
         <ui:Label text="This is your sanity.&#10;Whenever a creature appears, it will start decreasing.&#10;When it reaches 0, it is game over." style="justify-content: flex-start; align-items: auto; -unity-text-align: middle-center; font-size: 40px; -unity-font-style: bold; color: rgb(255, 255, 255);"/>
         <ui:VisualElement name="VisualElement" style="flex-grow: 1; position: relative; background-image: url(&quot;project://database/Assets/Project/Scripts/Tutorial/arrow-down.png?fileID=2800000&amp;guid=e9dc2b67edfb2fa44be4b1f4c7232a88&amp;type=3#arrow-down&quot;); width: auto; height: auto; top: 0; left: 0;"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="passenger-tutorial" class="tutorial tutorial-hidden" style="flex-grow: 1; scale: 1 1; position: absolute; top: auto; left: auto; width: 100%; display: none; transition-duration: 2s;">
+        <ui:Label text="Passenger has appeared!" style="font-size: 40px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: middle-center; transition-property: all; transition-duration: 0s; transition-timing-function: ease; transition-delay: 0s;"/>
+        <ui:Label text="Look at it to make it disappear." style="font-size: 40px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: middle-center;"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="stalker-tutorial" style="flex-grow: 1; top: auto; left: auto; position: absolute; width: 100%; transition-duration: 2s; display: none; scale: 1 1;">
+        <ui:Label text="Stalker has appeared!" style="font-size: 40px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: middle-center; transition-property: all; transition-duration: 0s; transition-timing-function: ease; transition-delay: 0s;"/>
+        <ui:Label text="Focus (Left Mouse) on the mirror to make it disappear." style="font-size: 40px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: middle-center;"/>
     </ui:VisualElement>
 </ui:UXML>
