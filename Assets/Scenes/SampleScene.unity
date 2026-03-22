@@ -3781,8 +3781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11ea6571f3f5fd4cbaad5326ba5dce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SanityManager
-  _highSanityBGM: {fileID: 8300000, guid: c723907d94d919d48a1a1dced62c821e, type: 3}
-  _lowSanityBGM: {fileID: 8300000, guid: 359d1ff30b28390479a40c6d8cbf49f5, type: 3}
+  _highSanityBGM: {fileID: 8300000, guid: b5c520ddc68588641bc0e8610c3c00fb, type: 3}
+  _lowSanityBGM: {fileID: 8300000, guid: 2883de4780b66ad45b55543f4d5fd4cc, type: 3}
   _highSanityAmbience: {fileID: 8300000, guid: 60e150679d8c2454686e55fa91a5f0ab, type: 3}
   _lowSanityAmbience: {fileID: 8300000, guid: 60e150679d8c2454686e55fa91a5f0ab, type: 3}
   SanityUpdated:
