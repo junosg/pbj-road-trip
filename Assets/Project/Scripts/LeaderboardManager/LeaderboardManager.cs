@@ -73,7 +73,7 @@ public class LeaderboardManager : MonoBehaviour
 
     public IEnumerator SubmitScore(string playerName, float time)
     {
-        if (time < LowestTop10Time && _topTen.Count >= 10) yield break;
+        if (time < LowestTop10Time && _topTen.Count > 10) yield break;
 
         LeaderboardScoreData data = new(){ player = playerName, time = time.ToString() };
         string json = JsonUtility.ToJson(data);
