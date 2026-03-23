@@ -92,7 +92,7 @@ public class LeaderboardManager : MonoBehaviour
         {
             Debug.Log("Score submitted!");
 
-            if (_topTen.Count >= 10)
+            if (_topTen.Count > 10)
             {
                 StartCoroutine("DeleteScore", LowestTop10Id); 
             }
