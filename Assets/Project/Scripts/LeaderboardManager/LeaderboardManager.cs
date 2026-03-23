@@ -86,20 +86,7 @@ public class LeaderboardManager : MonoBehaviour
         postRequest.downloadHandler = new DownloadHandlerBuffer();
         postRequest.SetRequestHeader("Content-Type", "application/json");
 
-        yield return postRequest.SendWebRequest();
-
-        if (postRequest.result == UnityWebRequest.Result.Success)
-        {
-            Debug.Log("Score submitted!");
-
-            if (_topTen.Count > 10)
-            {
-                StartCoroutine("DeleteScore", LowestTop10Id); 
-            }
-        } else
-        {
-            Debug.LogError("Submit failed: " + postRequest.error);
-        }            
+        yield return postRequest.SendWebRequest();        
     }
 
     public IEnumerator DeleteScore(string id)
@@ -135,10 +122,24 @@ public class LeaderboardManager : MonoBehaviour
                 top10.Add(new(){player = entry.Value.player, time = entry.Value.time, id = entry.Key});
             }
             
+
+
             _topTen.Clear();
-            _topTen = top10.OrderByDescending((score) => float.Parse(score.time)).ToList();
+            _topTen = top10.OrderByDescending((score) => float.Parse(score.time)).Take(10).ToList();
 
             TopTenUpdated.Invoke(_topTen);
+
+            if (top10.Count > 10)
+            {
+                top10.OrderByDescending((score) => float.Parse(score.time))
+                .Take(10)
+                .Skip(10)
+                .ToList()
+                .ForEach((score) =>
+                {
+                    StartCoroutine("DeleteScore", score.id);
+                });
+            }
 
             Debug.Log(_topTen.First().player);
         } else if (req.error != null)
